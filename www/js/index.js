@@ -27,9 +27,21 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener( 'deviceready', this.onDeviceReady, false );
-        document.addEventListener( 'deviceready', function() {
-            navigator.notification.vibrate( time )
-        }, false );
+
+        document.body.addEventListener( 'click', function() {
+
+            navigator.contacts.pickContact( function( contact ) {
+
+                navigator.notification.vibrateWithPattern( [ 0, 100, 100, 200, 100, 400, 100, 600 ] );
+                document.body.innerHTML = JSON.stringify( contact );
+
+            }, function( err ) {
+
+                console.log( 'Error: ' + err );
+
+            } );
+
+        }, false )
     },
     // deviceready Event Handler
     //
