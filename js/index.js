@@ -5,13 +5,13 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener( 'deviceready', this.onDeviceReady, false );
+        document.addEventListener( 'deviceready', this.onDeviceReady.bind( this ), false );
     },
 
     onDeviceReady: function() {
         navigator.notification.vibrate( 300 );
-        app.checkConnection();
-    }
+        this.checkConnection();
+    },
 
     checkConnection: function(){
 
@@ -28,6 +28,7 @@ var app = {
         states[Connection.NONE]     = 'No network connection';
 
         document.getElementById('main').innerHTML = 'Connection type: ' + states[networkState];
+        
     }
 
 };
