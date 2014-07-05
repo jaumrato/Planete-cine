@@ -16,3 +16,14 @@ html {
     padding: 10%;
     background: #333333;
 }
+
+#button{
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    right: 20%;
+    line-height: 50px;
+    text-align: center;
+    background: #00AEEF;
+    border-radius: 3px;
+}

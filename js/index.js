@@ -6,11 +6,14 @@ var app = {
 
     bindEvents: function() {
         document.addEventListener( 'deviceready', this.onDeviceReady, false );
+        document.getElementById('button').addEventListener( 'click', this.onButtonClick, false );
     },
 
     onDeviceReady: function() {
         navigator.notification.vibrate( 300 );
-        document.getElementById('main').innerHTML = "Test de remplacement";        
+    },
+
+    onButtonClick: function(){
         app.checkConnection();
     },
 
@@ -26,7 +29,8 @@ var app = {
         states[Connection.CELL_4G]  = 'Connexion cellulaire 4G';
         states[Connection.NONE]     = 'Pas de connexion réseau';
 
-        alert('Type de connexion : ' + states[networkState]);
+        document.getElementById('main').innerHTML = "Type de connexion : " + states[networkState];
+        
     }
 
 };
