@@ -5,12 +5,12 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener( 'deviceready', this.onDeviceReady.bind( this ), false );
+        document.addEventListener( 'deviceready', this.onDeviceReady, false );
     },
 
     onDeviceReady: function() {
         navigator.notification.vibrate( 300 );
-        this.checkConnection();
+        app.checkConnection();
     }
 
     checkConnection: function(){
@@ -27,7 +27,7 @@ var app = {
         states[Connection.CELL]     = 'Cell generic connection';
         states[Connection.NONE]     = 'No network connection';
 
-        document.body.innerHTML = 'Connection type: ' + states[networkState];
+        document.getElementById('main').innerHTML = 'Connection type: ' + states[networkState];
     }
 
 };
