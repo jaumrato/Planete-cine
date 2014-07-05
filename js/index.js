@@ -42,7 +42,7 @@ var app = {
 
             alert('error');
 
-        });
+        } );
         
     }
 
