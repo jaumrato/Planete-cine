@@ -14,22 +14,17 @@ var app = {
     },
 
     onButtonClick: function(){
-        app.checkConnection();
+        app.getWeather();
     },
 
-    checkConnection: function() {
-        var networkState = navigator.network.connection.type;
+    getWeather: function() {
 
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Connexion inconnue';
-        states[Connection.ETHERNET] = 'Connexion Ethernet';
-        states[Connection.WIFI]     = 'Connexion WiFi';
-        states[Connection.CELL_2G]  = 'Connexion cellulaire 2G';
-        states[Connection.CELL_3G]  = 'Connexion cellulaire 3G';
-        states[Connection.CELL_4G]  = 'Connexion cellulaire 4G';
-        states[Connection.NONE]     = 'Pas de connexion réseau';
-
-        document.getElementById('main').innerHTML = "Type de connexion : " + states[networkState];
+        var req = new XMLHttpRequest();
+        req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139', false); 
+        req.send(null);
+        if(req.status == 200){
+            document.getElementById('main').innerHTML = req.responseText;
+        }
         
     }
 
