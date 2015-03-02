@@ -1,0 +1,26 @@
+<div class="top-bar">
+    {{model.currentMovie.title}}
+</div>
+
+<div class="showtimes-by-theater main-container">
+
+    <div ng-repeat="theater in model.movieShowtimesByTheaters" class="theater">
+        <div class="theater-details">
+            <div class="thumbnail" style="background-image: url('{{theater.place.picture.href}}');"></div>
+            <div class="details">
+                <div class="name">{{theater.place.name}}</div>
+                <div class="distance">Situé à {{theater.place.distance | formatDistance}}</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
+                <span class="version-label">{{version}}</span>
+                <ul class="days">
+                    <li ng-repeat="showtime in showtimes" class="day">
+                        <span class="day-label">{{showtime.d | formatDay}}</span><span ng-repeat="hour in showtime.t" class="showtime">{{hour.$}}</span>
+                    </li>
+                </ul>
+            </div>
+    </div>
+
+</div>

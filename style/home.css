@@ -1,0 +1,79 @@
+.home .theaters-list{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 140px;
+    overflow: auto;
+}
+
+.theaters-list .theater{
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.theaters-list .theater:nth-child(even){
+    background: #F5F5F5;
+}
+
+.theaters-list .theater .thumbnail{
+    width: 60px;
+    float: left;
+    height: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 50%
+}
+
+.theaters-list .theater .details{
+    width: 70%;
+    margin: 0 0 0 10px;
+    float: left;
+    color: #777777;
+}
+
+.theaters-list .theater .details .name{
+    font-family: 'robotobold';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #28323C;
+    margin: 3px 0;
+}
+
+.home .bottom-block{
+    background: #48c9b0;
+    height: 140px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.home .button{
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 18px;
+    position: absolute;
+    line-height: 50px;
+    right: 20px;
+    left: 20px;
+    top: 50%;
+}
+
+.home .button.search_theater{
+    margin: -55px 0 0 0;
+}
+
+.home .button.search_movie{
+    margin: 5px 0 0 0;
+}

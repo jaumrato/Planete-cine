@@ -1,0 +1,17 @@
+.search-block.theater-search-block .magnifier-icon,
+.search-block.theater-search-block .geolocation-icon{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: 2px solid #DDDDDD;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.search-block.theater-search-block input{
+    width: calc(100% - 75px);
+}
+
+.theaters{
+    top: 100px;
+}

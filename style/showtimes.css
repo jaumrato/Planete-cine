@@ -1,0 +1,89 @@
+.favorite-star{
+    float: right;
+    font-size: 19px;
+    border: 2px solid #FFF;
+    line-height: 26px;
+    margin: 10px 0;
+    width: 26px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.showtimes .movie{
+    background: #FFF;
+    margin: 0 0 20px 0;
+    padding: 10px;
+}
+
+.showtimes .movie .details{
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 60px 80px;
+    padding: 0 0 0 70px;
+    min-height: 80px;
+}
+
+.showtimes .movie .title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.showtimes .movie .genres{
+    float: left;
+}
+
+.showtimes .movie .genre{
+    margin: 0 5px 0 0;
+}
+
+.showtimes .movie .runtime{
+    float: right;
+}
+
+.showtimes .movie .realisator{
+    margin: 7px 0 0 0;
+}
+
+.showtimes .movie .release-and-ratings{
+    margin: 5px 0;
+    padding: 5px 0;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+
+.showtimes .movie .release-and-ratings .stars{
+    float: right;
+}
+
+.showtimes .movie .days{
+    margin: 0;
+    padding: 0;
+}
+
+.showtimes .movie .day{
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+.showtimes .movie .day:nth-child(odd){
+    background: #EEEEEE;
+}
+
+.showtimes .movie .version-label{
+    font-weight: bold;
+    padding: 0 0 10px 10px;
+}
+
+.showtimes .movie .day-label{
+    font-weight: bold;
+    display: inline-block;
+    min-width: 75px;
+}
+
+.showtimes .movie .showtime{
+    margin: 0 0 0 8px;
+}
