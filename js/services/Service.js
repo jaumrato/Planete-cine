@@ -93,14 +93,13 @@ app.service( 'Service', function( $http ) {
 
     this.getShowtimeList = function( code ) {
         this.showLoader( 'Chargement des séances' );
-        // $http.get( this.baseURL + '/showtimelist', {
-        //     params: {
-        //         partner: 'YW5kcm9pZC12M3M',
-        //         format: 'json',
-        //         theaters: code
-        //     }
-        // } ).then(
-        $http.get( '/data/showtimes.json' ).then(
+        $http.get( this.baseURL + '/showtimelist', {
+            params: {
+                partner: 'YW5kcm9pZC12M3M',
+                format: 'json',
+                theaters: code
+            }
+        } ).then(
             function( resp ) {
                 this.model.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
                 this.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes );
@@ -147,8 +146,10 @@ app.service( 'Service', function( $http ) {
         //     this.model.moviesShowtimesForATheater[ movie.onShow.movie.title ].showtimes[ version ] = movie.scr;
         // }.bind( this ) );
         var out = {};
+        this.model.currentDay = null;
         movies.forEach( function( movie ) {
             movie.scr.forEach( function( day ) {
+                if ( this.model.currentDay === null ) this.model.currentDay = day.d;
                 out[ day.d ] = out[ day.d ] || {};
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
                     out[ day.d ][ movie.onShow.movie.title ] = {

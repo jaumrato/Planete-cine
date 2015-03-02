@@ -10,6 +10,24 @@
     font-weight: bold;
 }
 
+.days-bar{
+    position: fixed;
+    top: 50px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    background: #FFFFFF;
+    padding: 0 20px;
+    border-bottom: 1px solid #DDDDDD;
+    line-height: 47px;
+}
+
+.showtimes {
+    top: 100px;
+}
+
 .showtimes .movie{
     background: #FFF;
     margin: 0 0 20px 0;

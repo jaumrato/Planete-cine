@@ -5,8 +5,12 @@
         </span>
 </div>
 
+<div class="days-bar">
+    <span ng-repeat="(day,movies) in model.moviesShowtimesForATheater" ng-click="model.currentDay = day">{{day | formatDay}}</span>
+</div>
+
 <div class="showtimes main-container">
-    <div ng-repeat="(title,movie) in model.moviesShowtimesForATheater" class="movie">
+    <div ng-repeat="(title,movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie">
 
         <div class="details" style="background-image: url('{{movie.thumbnail}}');">
             <div class="title">{{title}}</div>
@@ -33,11 +37,7 @@
 
         <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
             <span class="version-label">{{version}}</span>
-            <ul class="days">
-                <li ng-repeat="showtime in showtimes" class="day">
-                    <span class="day-label">{{showtime.d | formatDay}}</span><span ng-repeat="hour in showtime.t" class="showtime">{{hour.$}}</span>
-                </li>
-            </ul>
+            <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
         </div>
 
     </div>
