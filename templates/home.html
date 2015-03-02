@@ -5,7 +5,7 @@
 <div class="home main-container">
 
     <div class="theaters-list">
-        <a ng-href="/#/showtimes/{{theater.code}}" ng-repeat="theater in model.userSettings.favoriteTheaters" class="theater">
+        <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.userSettings.favoriteTheaters" class="theater">
             <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
             <div class="details">
                 <div class="name">{{theater.name}}</div>
@@ -20,7 +20,7 @@
 
     <div class="bottom-block">
         <a href="#/theaters" class="button search_theater">Rechercher un cinéma</a>
-        <a href="/#/movies" class="button search_movie">Rechercher un film</a>
+        <a href="#/movies" class="button search_movie">Rechercher un film</a>
     </div>
 
 </div>

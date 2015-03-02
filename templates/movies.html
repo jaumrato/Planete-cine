@@ -1,16 +1,16 @@
 <div class="top-bar">
-    <a href="/#/" class="back-icon"><</a>Rechercher un film
+    <a href="#/" class="back-icon"><</a>Rechercher un film
 </div>
 
 <div class="search-block movie-search-block">
-    <img src="../assets/magnifier.svg" class="magnifier-icon" />
+    <img src="assets/magnifier.svg" class="magnifier-icon" />
     <input type="text" ng-model="model.search.title" placeholder="Rechercher le titre d'un film"/>
 </div>
 
 <div class="movies main-container">
 
     <div class="movies-list">
-        <a class="movie" ng-href="/#/showtimesByTheater/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" style="background-image: url('{{movie.poster.href}}');" ng-click="model.currentMovie = movie">
+        <a class="movie" ng-href="#/showtimesByTheater/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" style="background-image: url('{{movie.poster.href}}');" ng-click="model.currentMovie = movie">
             <div class="title">{{movie.title}}</div>
             <div class="genres">{{movie.genre | formatGenres}}</div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>

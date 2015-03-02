@@ -4,13 +4,13 @@
 
 <div class="search-block theater-search-block">
     <input type="text" ng-model="model.searchTheaterText"/>
-    <img src="../assets/magnifier.svg" class="magnifier-icon" ng-click="launchTheaterSearch()"/>
-    <img src="../assets/geolocation.svg" class="geolocation-icon" ng-click="launchTheaterSearchByGeolocation()"/>
+    <img src="assets/magnifier.svg" class="magnifier-icon" ng-click="launchTheaterSearch()"/>
+    <img src="assets/geolocation.svg" class="geolocation-icon" ng-click="launchTheaterSearchByGeolocation()"/>
 </div>
 
 <div class="theaters main-container">
     <div class="theaters-list">
-         <a ng-href="/#/showtimes/{{theater.code}}" ng-repeat="theater in model.theaters" class="theater">
+         <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.theaters" class="theater">
             <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
             <div class="details">
                 <div class="name">{{theater.name}}</div>
