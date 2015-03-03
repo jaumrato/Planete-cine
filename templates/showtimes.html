@@ -14,14 +14,25 @@
 
         <div class="details" style="background-image: url('{{movie.thumbnail}}');">
             <div class="title">{{title}}</div>
-            <div class="genres">
-                <span ng-repeat="genre in movie.genres" class="genre">{{genre.$}}</span>
-            </div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>
             <div class="clear"></div>
-            <div class="realisator">Réalisateur : {{movie.casting.directors}}</div>
-            <div class="actors">Acteurs : {{movie.casting.actors}}</div>
+            <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
+                <div class="version-label">{{version}}</div>
+                <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+            </div>
         </div>
+
+    </div>
+
+</div>
+
+<!--
+        <div class="genres">
+            <span ng-repeat="genre in movie.genres" class="genre">{{genre.$}}</span>
+        </div>
+
+        <div class="realisator">Réalisateur : {{movie.casting.directors}}</div>
+        <div class="actors">Acteurs : {{movie.casting.actors}}</div>
 
         <div class="release-and-ratings">
             <div class="ratings">
@@ -35,13 +46,6 @@
             <div class="release">{{movie.release | formatRelease}}</div>
         </div>
 
-        <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
-            <span class="version-label">{{version}}</span>
-            <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
-        </div>
-
-    </div>
-
-</div>
+-->
 
 <loader></loader>

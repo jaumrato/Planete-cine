@@ -7,7 +7,7 @@
     width: 26px;
     text-align: center;
     border-radius: 50%;
-    font-weight: bold;
+    font-family: 'robotobold';
 }
 
 .days-bar{
@@ -47,61 +47,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px;
-    font-weight: bold;
+    font-family: 'robotobold';
 }
 
-.showtimes .movie .genres{
-    float: left;
-}
-
-.showtimes .movie .genre{
-    margin: 0 5px 0 0;
-}
-
-.showtimes .movie .runtime{
-    float: right;
-}
-
-.showtimes .movie .realisator{
-    margin: 7px 0 0 0;
-}
-
-.showtimes .movie .release-and-ratings{
-    margin: 5px 0;
-    padding: 5px 0;
-    border-top: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
-}
-
-.showtimes .movie .release-and-ratings .stars{
-    float: right;
-}
-
-.showtimes .movie .days{
-    margin: 0;
-    padding: 0;
-}
-
-.showtimes .movie .day{
-    line-height: 20px;
-    padding: 0 10px;
-}
-
-.showtimes .movie .day:nth-child(odd){
-    background: #EEEEEE;
+.showtimes .movie .version-container{
+    margin: 5px 0 0 0;
 }
 
 .showtimes .movie .version-label{
-    font-weight: bold;
-    padding: 0 0 10px 10px;
-}
-
-.showtimes .movie .day-label{
-    font-weight: bold;
-    display: inline-block;
-    min-width: 75px;
+    font-family: 'robotobold';
 }
 
 .showtimes .movie .showtime{
-    margin: 0 0 0 8px;
+    margin: 0 5px 0 0;
 }

@@ -34,6 +34,6 @@ document.addEventListener( 'deviceready', function() {
     angular.bootstrap( document.body, [ 'Application' ] );
 }, false );
 
-// document.addEventListener( "DOMContentLoaded", function( event ) {
-//     angular.bootstrap( document.body, [ 'Application' ] );
-// }, false );
+document.addEventListener( "DOMContentLoaded", function( event ) {
+    angular.bootstrap( document.body, [ 'Application' ] );
+}, false );
