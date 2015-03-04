@@ -1,0 +1,36 @@
+.movies-list .movie{
+    display: block;
+    color: #777777;
+    text-decoration: none;
+}
+
+.movies-list .movie .details{
+    padding: 10px 0 10px 90px;
+    min-height: 80px;
+    background-size: 60px 80px;
+    background-position: 20px center;
+    background-repeat: no-repeat;
+}
+
+.movies-list .movie:nth-child(odd){
+    background-color: #F5F5F5;
+}
+
+.movies-list .movie .title{
+    color: #28323C;
+    font-size: 14px;
+    font-family: 'robotobold';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movies-list .movie .genres{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movies-list .movie .runtime{
+   margin: 0 0 10px 0;
+}

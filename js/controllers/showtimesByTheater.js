@@ -10,4 +10,12 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
         Service.getShowtimesListForAMovie( $routeParams.movieCode );
     } );
 
+    $scope.nextDay = function() {
+        $scope.model.currentDay += 1;
+    };
+
+    $scope.prevDay = function() {
+        $scope.model.currentDay -= 1;
+    };
+
 } );

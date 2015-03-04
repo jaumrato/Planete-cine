@@ -24,40 +24,26 @@
     line-height: 47px;
 }
 
+.days-bar .arrows{
+    font-size: 19px;
+    border: 2px solid #48C9B0;
+    color: #48C9B0;
+    line-height: 26px;
+    margin: 10px 0;
+    width: 26px;
+    text-align: center;
+    border-radius: 50%;
+    font-family: 'robotobold';
+}
+
+.days-bar .arrows.right{
+    float: right;
+}
+
+.days-bar .arrows.left{
+    float: left;
+}
+
 .showtimes {
     top: 100px;
-}
-
-.showtimes .movie{
-    background: #FFF;
-    margin: 0 0 20px 0;
-    padding: 10px;
-}
-
-.showtimes .movie .details{
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-size: 60px 80px;
-    padding: 0 0 0 70px;
-    min-height: 80px;
-}
-
-.showtimes .movie .title{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    font-family: 'robotobold';
-}
-
-.showtimes .movie .version-container{
-    margin: 5px 0 0 0;
-}
-
-.showtimes .movie .version-label{
-    font-family: 'robotobold';
-}
-
-.showtimes .movie .showtime{
-    margin: 0 5px 0 0;
 }

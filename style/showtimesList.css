@@ -1,0 +1,16 @@
+.showtimes-list{
+
+}
+
+.showtimes-list .version-container{
+    margin: 5px 0 0 0;
+}
+
+.showtimes-list .version-container .version-label{
+    font-family: 'robotobold';
+    color: #28323C;
+}
+
+.showtimes-list .version-container .showtime{
+    margin: 0 5px 0 0;
+}

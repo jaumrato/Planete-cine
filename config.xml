@@ -16,12 +16,13 @@
         Damien Duhamel
     </author>
 
+    <preference name="permissions" value="none"/>
+
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="android-minSdkVersion" value="11" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="splash-screen-duration" value="2000"/>
 
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.network-information" />

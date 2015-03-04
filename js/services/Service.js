@@ -110,46 +110,37 @@ app.service( 'Service', function( $http ) {
 
     this.getShowtimeVersion = function( movie ) {
         var version = movie.version.$ === 'Français' ? 'VF' : 'VOSTFR';
-        if ( movie.screenFormat.$ === '3D' ) version += ' 3D';
+        if ( movie.screenFormat && movie.screenFormat.$ === '3D' ) version += ' 3D';
         return version;
     };
 
     this.handleMovieShowtimesListByTheaters = function( theaters ) {
-        this.model.movieShowtimesByTheaters = [];
+        var out = {};
+        this.model.currentDay = 0;
+        this.model.showtimesDays = [];
         theaters.forEach( function( item ) {
-            var theater = {
-                place: item.place.theater,
-                showtimes: {}
-            };
             item.movieShowtimes.forEach( function( movie ) {
-                var version = this.getShowtimeVersion( movie );
-                theater.showtimes[ version ] = movie.scr;
+                movie.scr.forEach( function( day ) {
+                    if ( this.model.showtimesDays.indexOf( day.d ) === -1 ) this.model.showtimesDays.push( day.d );
+                    out[ day.d ] = out[ day.d ] || {};
+                    if ( out[ day.d ][ item.place.theater.code ] === undefined ) {
+                        out[ day.d ][ item.place.theater.code ] = item.place.theater;
+                        out[ day.d ][ item.place.theater.code ].showtimes = {};
+                    }
+                    out[ day.d ][ item.place.theater.code ].showtimes[ this.getShowtimeVersion( movie ) ] = day.t;
+                }.bind( this ) );
             }.bind( this ) );
-            this.model.movieShowtimesByTheaters.push( theater );
+            this.model.movieShowtimesByTheaters = out;
         }.bind( this ) );
     };
 
     this.handleShowtimesList = function( movies ) {
-        // movies.forEach( function( movie ) {
-        //     if ( this.model.moviesShowtimesForATheater[ movie.onShow.movie.title ] === undefined ) {
-        //         this.model.moviesShowtimesForATheater[ movie.onShow.movie.title ] = {
-        //             showtimes: {},
-        //             casting: movie.onShow.movie.castingShort,
-        //             genres: movie.onShow.movie.genre,
-        //             thumbnail: movie.onShow.movie.poster.href,
-        //             runtime: movie.onShow.movie.runtime,
-        //             release: movie.onShow.movie.release.releaseDate,
-        //             ratings: movie.onShow.movie.statistics
-        //         };
-        //     }
-        //     var version = this.getShowtimeVersion( movie );
-        //     this.model.moviesShowtimesForATheater[ movie.onShow.movie.title ].showtimes[ version ] = movie.scr;
-        // }.bind( this ) );
         var out = {};
-        this.model.currentDay = null;
+        this.model.currentDay = 0;
+        this.model.showtimesDays = [];
         movies.forEach( function( movie ) {
             movie.scr.forEach( function( day ) {
-                if ( this.model.currentDay === null ) this.model.currentDay = day.d;
+                if ( this.model.showtimesDays.indexOf( day.d ) === -1 ) this.model.showtimesDays.push( day.d );
                 out[ day.d ] = out[ day.d ] || {};
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
                     out[ day.d ][ movie.onShow.movie.title ] = {
@@ -166,6 +157,7 @@ app.service( 'Service', function( $http ) {
                 out[ day.d ][ movie.onShow.movie.title ].showtimes[ version ] = day.t;
             }.bind( this ) );
         }.bind( this ) );
+        this.model.showtimesDays.sort();
         this.model.moviesShowtimesForATheater = out;
     };
 

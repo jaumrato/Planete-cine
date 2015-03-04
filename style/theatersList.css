@@ -1,0 +1,38 @@
+.theaters-list .theater{
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.theaters-list .theater:nth-child(even){
+    background: #F5F5F5;
+}
+
+.theaters-list .theater .thumbnail{
+    width: 60px;
+    float: left;
+    height: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 50%
+}
+
+.theaters-list .theater .details{
+    width: 70%;
+    margin: 0 0 0 10px;
+    float: left;
+    color: #777777;
+}
+
+.theaters-list .theater .details .name{
+    font-family: 'robotobold';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #28323C;
+    margin: 3px 0;
+}

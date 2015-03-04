@@ -2,25 +2,33 @@
     {{model.currentMovie.title}}
 </div>
 
+<div class="days-bar">
+    <span ng-if="model.currentDay > 0" ng-click="prevDay()" class="arrows left"> < </span>
+    {{model.showtimesDays[model.currentDay] | formatDay}}
+    <span ng-if="model.currentDay < model.showtimesDays.length - 1" ng-click="nextDay()" class="arrows right"> > </span>
+</div>
+
 <div class="showtimes-by-theater main-container">
 
-    <div ng-repeat="theater in model.movieShowtimesByTheaters" class="theater">
-        <div class="theater-details">
-            <div class="thumbnail" style="background-image: url('{{theater.place.picture.href}}');"></div>
-            <div class="details">
-                <div class="name">{{theater.place.name}}</div>
-                <div class="distance">Situé à {{theater.place.distance | formatDistance}}</div>
+    <div class="theaters-list">
+        <div ng-repeat="theater in model.movieShowtimesByTheaters[ model.showtimesDays[ model.currentDay ] ] | orderBy:name:true" class="theater">
+            <div class="theater-details">
+                <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
+                <div class="details">
+                    <div class="name">{{theater.name}}</div>
+                    <div class="adress">
+                        {{theater.city}} - {{theater.postalCode}}
+                        <div class="distance">Situé à {{theater.distance | formatDistance}}</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
+            <div class="showtimes-list">
+                <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
+                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+                </div>
+            </div>
         </div>
-        <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
-                <span class="version-label">{{version}}</span>
-                <ul class="days">
-                    <li ng-repeat="showtime in showtimes" class="day">
-                        <span class="day-label">{{showtime.d | formatDay}}</span><span ng-repeat="hour in showtime.t" class="showtime">{{hour.$}}</span>
-                    </li>
-                </ul>
-            </div>
     </div>
 
 </div>

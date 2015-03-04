@@ -6,19 +6,22 @@
 </div>
 
 <div class="days-bar">
-    <span ng-repeat="(day,movies) in model.moviesShowtimesForATheater" ng-click="model.currentDay = day">{{day | formatDay}}</span>
+    <span ng-if="model.currentDay > 0" ng-click="prevDay()" class="arrows left"> < </span>
+    {{model.showtimesDays[model.currentDay] | formatDay}}
+    <span ng-if="model.currentDay < model.showtimesDays.length - 1" ng-click="nextDay()" class="arrows right"> > </span>
 </div>
 
-<div class="showtimes main-container">
-    <div ng-repeat="(title,movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie">
+<div class="showtimes main-container movies-list">
+    <div ng-repeat="(title,movie) in model.moviesShowtimesForATheater[ model.showtimesDays[model.currentDay] ]" class="movie">
 
         <div class="details" style="background-image: url('{{movie.thumbnail}}');">
             <div class="title">{{title}}</div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>
             <div class="clear"></div>
-            <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
-                <div class="version-label">{{version}}</div>
-                <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+            <div class="showtimes-list">
+                <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
+                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+                </div>
             </div>
         </div>
 
