@@ -9,6 +9,8 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
                 longitude: position.coords.longitude
             };
             Service.getTheatersByGeolocation();
+        }, function( e ) {
+            alert( e );
         } );
     };
 
