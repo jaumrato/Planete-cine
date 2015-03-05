@@ -30,10 +30,9 @@ app.config( function( $routeProvider, $locationProvider ) {
 } );
 
 document.addEventListener( 'deviceready', function() {
-    console.log( 'deviceready' );
     angular.bootstrap( document.body, [ 'Application' ] );
 }, false );
 
-document.addEventListener( "DOMContentLoaded", function( event ) {
-    angular.bootstrap( document.body, [ 'Application' ] );
-}, false );
+// document.addEventListener( "DOMContentLoaded", function( event ) {
+//     angular.bootstrap( document.body, [ 'Application' ] );
+// }, false );
