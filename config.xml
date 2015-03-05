@@ -24,9 +24,9 @@
     <preference name="android-minSdkVersion" value="11" />
     <preference name="android-installLocation" value="auto" />
 
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <!-- <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" /> -->
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
