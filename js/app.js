@@ -1,4 +1,4 @@
-var app = angular.module( 'Application', [ 'ngRoute', 'cordovaGeolocationModule' ] );
+var app = angular.module( 'Application', [ 'ngRoute' ] );
 
 app.config( function( $routeProvider, $locationProvider ) {
 

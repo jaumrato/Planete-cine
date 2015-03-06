@@ -2,12 +2,18 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.model = Service.model;
 
+    this.showLoader( 'Chargement des séances' );
+
     navigator.geolocation.getCurrentPosition( function( position ) {
         $scope.model.position = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         };
         Service.getShowtimesListForAMovie( $routeParams.movieCode );
+    }, function( e ) {
+        alert( e );
+    }, {
+        enableHighAccuracy: true
     } );
 
     $scope.nextDay = function() {
