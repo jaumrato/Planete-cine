@@ -2,8 +2,6 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.model = Service.model;
 
-    Service.showLoader( 'Chargement des séances' );
-
     navigator.geolocation.getCurrentPosition( function( position ) {
         $scope.model.position = {
             latitude: position.coords.latitude,
