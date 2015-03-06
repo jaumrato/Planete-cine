@@ -4,7 +4,7 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
 
     $scope.launchTheaterSearchByGeolocation = function() {
 
-        this.showLoader( 'Chargement des cinémas' );
+        Service.showLoader( 'Chargement des cinémas' );
 
         navigator.geolocation.getCurrentPosition( function( position ) {
             $scope.model.position = {
