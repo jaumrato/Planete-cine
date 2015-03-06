@@ -24,6 +24,5 @@ app.config( function( $routeProvider, $locationProvider ) {
 } );
 
 document.addEventListener( 'deviceready', function() {
-    navigator.vibrate( 500 );
     angular.bootstrap( document.body, [ 'Application' ] );
 }, false );

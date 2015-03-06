@@ -4,6 +4,8 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
 
     $scope.launchTheaterSearchByGeolocation = function() {
         navigator.geolocation.getCurrentPosition( function( position ) {
+            alert( position );
+            alert( $scope );
             $scope.model.position = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
