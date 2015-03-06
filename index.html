@@ -15,13 +15,12 @@
     <link href="style/showtimesList.css" rel="stylesheet">
     <link href="style/moviesList.css" rel="stylesheet">
 </head>
-<body>
+<body onload="onLoad()">
 
     <ng-view></ng-view>
 
-    <script type="text/javascript" src="cordova.js"></script>
-
     <!-- Libraries -->
+    <script src="cordova.js"></script>
     <script src="libs/angular.min.js"></script>
     <script src="libs/angular-route.js"></script>
     <script src="libs/lodash.min.js"></script>
