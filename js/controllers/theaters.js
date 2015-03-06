@@ -1,11 +1,10 @@
-app.controller( 'theatersCtrl', function( $scope, Service ) {
+app.controller( 'theatersCtrl', function( $scope, Service, cordovaGeolocationService ) {
 
     $scope.model = Service.model;
 
     $scope.launchTheaterSearchByGeolocation = function() {
-        navigator.geolocation.getCurrentPosition( function( position ) {
-            alert( position );
-            alert( $scope );
+
+        cordovaGeolocationService.getCurrentPosition( function( position ) {
             $scope.model.position = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
@@ -14,6 +13,7 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
         }, function( e ) {
             alert( e );
         } );
+
     };
 
     $scope.launchTheaterSearch = function() {
