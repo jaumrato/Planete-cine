@@ -34,4 +34,8 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, Service ) {
         Service.saveUserSettings();
     };
 
+    $scope.onMovieClick = function( movie ){
+        $scope.model.movieDetails = movie;
+    };
+
 } );

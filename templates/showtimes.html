@@ -12,8 +12,7 @@
 </div>
 
 <div class="showtimes main-container movies-list">
-    <div ng-repeat="(title,movie) in model.moviesShowtimesForATheater[ model.showtimesDays[model.currentDay] ]" class="movie">
-
+    <a ng-repeat="(title,movie) in model.moviesShowtimesForATheater[ model.showtimesDays[model.currentDay] ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails">
         <div class="details" style="background-image: url('{{movie.thumbnail}}');">
             <div class="title">{{title}}</div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>
@@ -24,31 +23,7 @@
                 </div>
             </div>
         </div>
-
-    </div>
-
+    </a>
 </div>
-
-<!--
-        <div class="genres">
-            <span ng-repeat="genre in movie.genres" class="genre">{{genre.$}}</span>
-        </div>
-
-        <div class="realisator">Réalisateur : {{movie.casting.directors}}</div>
-        <div class="actors">Acteurs : {{movie.casting.actors}}</div>
-
-        <div class="release-and-ratings">
-            <div class="ratings">
-                <div class="press-ratings">
-                    Presse [{{movie.ratings.pressReviewCount}} avis] : <span class="stars">{{movie.ratings.pressRating | formatRating}}</span>
-                </div>
-                <div class="users-ratings">
-                    Spectateurs [{{movie.ratings.userRatingCount}} avis] : <span class="stars">{{movie.ratings.userRating | formatRating}}</span>
-                </div>
-            </div>
-            <div class="release">{{movie.release | formatRelease}}</div>
-        </div>
-
--->
 
 <loader></loader>

@@ -145,12 +145,14 @@ app.service( 'Service', function( $http ) {
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
                     out[ day.d ][ movie.onShow.movie.title ] = {
                         showtimes: {},
+                        title: movie.onShow.movie.title,
                         casting: movie.onShow.movie.castingShort,
                         genres: movie.onShow.movie.genre,
                         thumbnail: movie.onShow.movie.poster.href,
                         runtime: movie.onShow.movie.runtime,
                         release: movie.onShow.movie.release.releaseDate,
-                        ratings: movie.onShow.movie.statistics
+                        ratings: movie.onShow.movie.statistics,
+                        trailer: movie.onShow.movie.trailer
                     };
                 }
                 var version = this.getShowtimeVersion( movie );

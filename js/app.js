@@ -17,12 +17,16 @@ app.config( function( $routeProvider, $locationProvider ) {
     } ).when( '/showtimesByTheater/:movieCode', {
         templateUrl: 'templates/showtimesByTheater.html',
         controller: 'showtimesByTheaterCtrl'
+    } ).when( '/movieDetails', {
+        templateUrl: 'templates/movieDetails.html',
+        controller: 'movieDetailsCtrl'
     } ).otherwise( {
         redirectTo: '/'
     } );
 
 } );
 
-document.addEventListener( 'deviceready', function() {
+//document.addEventListener( 'deviceready', function() {
+window.addEventListener( 'load', function() {
     angular.bootstrap( document.body, [ 'Application' ] );
 }, false );
