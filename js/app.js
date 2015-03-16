@@ -26,7 +26,7 @@ app.config( function( $routeProvider, $locationProvider ) {
 
 } );
 
-//document.addEventListener( 'deviceready', function() {
-window.addEventListener( 'load', function() {
+document.addEventListener( 'deviceready', function() {
+//window.addEventListener( 'load', function() {
     angular.bootstrap( document.body, [ 'Application' ] );
 }, false );
