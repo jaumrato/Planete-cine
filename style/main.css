@@ -68,6 +68,11 @@ ul, li{
     list-style-type: none;
 }
 
+a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 input{
     outline: none;
 }
@@ -79,6 +84,16 @@ input{
     color: #FFFFFF;
     line-height: 50px;
     font-size: 18px;
+}
+
+.top-bar .back-icon{
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: -3px 10px 0 0;
 }
 
 .main-container{

@@ -1,12 +1,10 @@
 .favorite-star{
     float: right;
-    font-size: 19px;
-    border: 2px solid #FFF;
+    font-size: 16px;
     line-height: 26px;
     margin: 10px 0;
     width: 26px;
     text-align: center;
-    border-radius: 50%;
     font-family: 'robotobold';
 }
 
@@ -25,15 +23,14 @@
 }
 
 .days-bar .arrows{
-    font-size: 19px;
+    width: 10px;
+    height: 10px;
+    padding: 5px;
     border: 2px solid #48C9B0;
     color: #48C9B0;
-    line-height: 26px;
-    margin: 10px 0;
-    width: 26px;
-    text-align: center;
     border-radius: 50%;
-    font-family: 'robotobold';
+    vertical-align: middle;
+    margin: 13px 2px;
 }
 
 .days-bar .arrows.right{
