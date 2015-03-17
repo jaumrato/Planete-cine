@@ -1,10 +1,46 @@
-.home .theaters-list{
+.home-top-bar.top-bar{
+    text-align: center;
+}
+
+.home .theaters-list,
+.home .empty-theaters-list{
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 140px;
     overflow: auto;
+}
+
+.home .empty-theaters-list .vertical-center{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    height: 140px;
+    margin: auto;
+    text-align: center;
+}
+
+.home .empty-theaters-list .vertical-center .title{
+    font-family: 'robotobold';
+    color: #28323C;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+.home .empty-theaters-list .vertical-center .message{
+    color: #777777;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.home .empty-theaters-list .vertical-center .favorite-star{
+    color: #28323C;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .home .bottom-block{

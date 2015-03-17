@@ -23,7 +23,7 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
     };
 
     $scope.onErrorGeolocation = function() {
-        var message = "La recherche géolocalisée nécessite l'activation du GPS.",
+        var message = "L'activation du GPS est nécessaire afin de trouver les cinémas proposant ce film autour de vous.",
             title = "Activation du GPS",
             buttonLabels = ["Réessayer", "Annuler"];
         navigator.notification.confirm( message, function( index ){
