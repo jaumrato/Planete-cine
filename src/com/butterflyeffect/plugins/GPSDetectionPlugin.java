@@ -16,7 +16,7 @@ public class GPSDetectionPlugin extends CordovaPlugin {
 
         PluginResult result = null;
         boolean gpsEnabled = false;
-        String GPSDetectionAction = "gpsDetection";
+        String GPSDetectionAction = "GPSDetection";
 
         if (action.equals(GPSDetectionAction)) {
             android.content.ContentResolver contentResolver = cordova.getActivity().getApplicationContext().getContentResolver();
