@@ -28,7 +28,7 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
 
     $scope.onErrorGeolocation = function( e ) {
         alert( e );
-    } );
+    };
 
     $scope.launchTheaterSearch = function() {
         Service.getTheaters();
