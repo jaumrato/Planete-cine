@@ -10,8 +10,6 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
         Service.getShowtimesListForAMovie( $routeParams.movieCode );
     }, function( e ) {
         alert( e );
-    }, {
-        enableHighAccuracy: true
     } );
 
     $scope.nextDay = function() {

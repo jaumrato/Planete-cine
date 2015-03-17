@@ -15,8 +15,6 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
                 Service.getTheatersByGeolocation();
             }, function( e ) {
                 alert( e );
-            }, {
-                enableHighAccuracy: true
             } );
         } else {
             navigator.notification.alert(
