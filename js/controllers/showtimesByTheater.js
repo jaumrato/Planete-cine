@@ -2,6 +2,8 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.model = Service.model;
 
+    $scope.model.movieShowtimesByTheaters = {};
+
     $scope.getShowtimesListForAMovie = function() {
         if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
             navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {

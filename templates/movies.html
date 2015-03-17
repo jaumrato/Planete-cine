@@ -14,7 +14,6 @@
 
     <div class="movies-list">
         <a class="movie" ng-href="#/showtimesByTheater/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" ng-click="model.currentMovie = movie">
-
             <div class="details" style="background-image: url('{{movie.poster.href}}');">
                 <div class="title">{{movie.title}}</div>
                 <div class="genres">{{movie.genre | formatGenres}}</div>
@@ -22,7 +21,6 @@
                 <div class="release">{{movie.release.releaseDate | formatRelease}}</div>
                 <div class="clear"></div>
             </div>
-
         </a>
     </div>
 
