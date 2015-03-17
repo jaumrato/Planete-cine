@@ -30,7 +30,7 @@ document.addEventListener( 'deviceready', function() {
     //window.addEventListener( 'load', function() {
     angular.bootstrap( document.body, [ 'Application' ] );
 
-    var gpsDetect = cordova.require( 'cordova/plugin/gpsDetectionPlugin' );
+    var gpsDetect = cordova.require( 'cordova/plugin/GPSDetectionPlugin' );
 
     gpsDetect.checkGPS( onGPSSuccess, onGPSError );
 
