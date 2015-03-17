@@ -29,18 +29,4 @@ app.config( function( $routeProvider, $locationProvider ) {
 document.addEventListener( 'deviceready', function() {
     //window.addEventListener( 'load', function() {
     angular.bootstrap( document.body, [ 'Application' ] );
-
-    var gpsDetect = cordova.require( 'cordova/plugin/GPSDetectionPlugin' );
-
-    gpsDetect.checkGPS( onGPSSuccess, onGPSError );
-
-    function onGPSSuccess( isEnabled ) {
-        if ( isEnabled ) alert( "GPS is enabled" );
-        else alert( "GPS is disabled" );
-    }
-
-    function onGPSError( e ) {
-        alert( "Error : " + e );
-    }
-
 }, false );
