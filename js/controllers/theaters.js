@@ -5,17 +5,15 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
     $scope.model.previousView = 'theaters';
 
     $scope.launchTheaterSearchByGeolocation = function() {
-
         if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
             navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
                 maximumAge: 0,
-                timeout: 10000,
+                timeout: 1000,
                 enableHighAccuracy: true
             } );
         } else {
-            alert('no gps 1')
+            $scope.onErrorGeolocation();
         }
-
     };
 
     $scope.onSuccessGeolocation = function( position ) {
@@ -27,7 +25,12 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
     };
 
     $scope.onErrorGeolocation = function( e ) {
-        alert( e );
+        var message = "La recherche géolocalisée nécessite l'activation du GPS.",
+            title = "Activation du GPS",
+            buttonLabels = ["Réessayer", "Annuler"];
+        navigator.notification.confirm( message, function( index ){
+            alert( index )
+        }, title, buttonLabels );
     };
 
     $scope.launchTheaterSearch = function() {
