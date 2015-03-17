@@ -5,6 +5,8 @@ app.controller( 'homeCtrl', [
 
         $scope.model = Service.model;
 
+        $scope.model.previousView = 'home';
+
         $scope.setCurrentTheater = function( theater ) {
             Service.setCurrentTheater( theater );
         };

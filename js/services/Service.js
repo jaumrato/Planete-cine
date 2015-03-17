@@ -16,6 +16,42 @@ app.service( 'Service', function( $http ) {
         this.model.loader.status = false;
     };
 
+    this.getMovieDetails = function() {
+        this.showLoader( 'Chargement des informations' );
+        return $http.get( this.baseURL + '/movie', {
+            params: {
+                partner: 'YW5kcm9pZC12M3M',
+                format: 'json',
+                mediafmt: 'mp4-lc',
+                profile: 'medium',
+                code: this.model.movieDetails.code,
+                striptags: 'synopsis,synopsisshort'
+            }
+        } ).then( function( resp ) {
+            this.model.movieDetails.synopsis = resp.data.movie.synopsis;
+            this.model.movieDetails.castMember = resp.data.movie.castMember;
+            this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
+            this.model.movieDetails.negativeReview = resp.data.movie.helpfulNegativeReview[ 0 ];
+            this.hideLoader();
+        }.bind( this ) );
+    };
+
+    this.getTrailer = function() {
+        this.showLoader( 'Chargement des informations' );
+        return $http.get( this.baseURL + '/media', {
+            params: {
+                partner: 'YW5kcm9pZC12M3M',
+                format: 'json',
+                mediafmt: 'mp4-lc',
+                profile: 'medium',
+                code: this.model.movieDetails.trailer.code
+            }
+        } ).then( function( resp ) {
+            this.model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
+            this.hideLoader();
+        }.bind( this ) );
+    };
+
     this.getTheatersByGeolocation = function() {
         this.showLoader( 'Chargement des cinémas' );
         $http.get( this.baseURL + '/theaterlist', {
@@ -96,6 +132,7 @@ app.service( 'Service', function( $http ) {
         $http.get( this.baseURL + '/showtimelist', {
             params: {
                 partner: 'YW5kcm9pZC12M3M',
+                profile: 'medium',
                 format: 'json',
                 theaters: code
             }
@@ -130,6 +167,13 @@ app.service( 'Service', function( $http ) {
                     out[ day.d ][ item.place.theater.code ].showtimes[ this.getShowtimeVersion( movie ) ] = day.t;
                 }.bind( this ) );
             }.bind( this ) );
+            for ( var day in out ) {
+                var theatersList = [];
+                for ( var code in out[ day ] ) {
+                    theatersList.push( out[ day ][ code ] )
+                }
+                out[ day ] = theatersList;
+            }
             this.model.movieShowtimesByTheaters = out;
         }.bind( this ) );
     };
@@ -147,6 +191,7 @@ app.service( 'Service', function( $http ) {
                         showtimes: {},
                         title: movie.onShow.movie.title,
                         casting: movie.onShow.movie.castingShort,
+                        code: movie.onShow.movie.code,
                         genres: movie.onShow.movie.genre,
                         thumbnail: movie.onShow.movie.poster.href,
                         runtime: movie.onShow.movie.runtime,

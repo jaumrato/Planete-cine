@@ -1,4 +1,4 @@
-app.controller( 'showtimesCtrl', function( $scope, $routeParams, Service ) {
+app.controller( 'showtimesCtrl', function( $scope, $route, $routeParams, Service ) {
 
     $scope.model = Service.model;
 
@@ -34,7 +34,7 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, Service ) {
         Service.saveUserSettings();
     };
 
-    $scope.onMovieClick = function( movie ){
+    $scope.onMovieClick = function( movie ) {
         $scope.model.movieDetails = movie;
     };
 

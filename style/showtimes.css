@@ -1,9 +1,11 @@
 .favorite-star{
     float: right;
-    font-size: 16px;
-    line-height: 26px;
-    margin: 10px 0;
-    width: 26px;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 13px 0;
+    width: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
     text-align: center;
     font-family: 'robotobold';
 }
@@ -30,7 +32,7 @@
     color: #48C9B0;
     border-radius: 50%;
     vertical-align: middle;
-    margin: 13px 2px;
+    margin: 13px 0;
 }
 
 .days-bar .arrows.right{

@@ -1,0 +1,52 @@
+.movie-details video{
+    width: 100%;
+}
+
+.movie-details .title{
+    font-size: 18px;
+    color: #28323C;
+    font-family: 'robotobold';
+    padding: 0 20px;
+    margin: 20px 0 10px 0;
+}
+
+.movie-details p{
+    font-size: 14px;
+    color: #777777;
+    padding: 0 20px;
+    text-align: justify;
+}
+
+.movie-details .rating-category{
+    color: #28323C;
+}
+
+.movie-details p .stars{
+    float: right;
+    color: #28323C;
+}
+
+.movie-details .person{
+    color: #777777;
+    font-size: 12px;
+    padding: 5px 20px;
+    height: 60px;
+}
+
+.movie-details .person .thumbnail{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 0 10px 0 0;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movie-details .person .name{
+    margin: 13px 0 0 0;
+    color: #28323C;
+    display: block;
+    font-size: 14px;
+}
