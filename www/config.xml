@@ -27,8 +27,7 @@
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.dialogs" />
-
-    <plugin name="GPSDetectionPlugin" value="com.butterflyeffect.plugins.GPSDetectionPlugin"/>
+    <gap:plugin name="com.phonegap.plugins.GPSDetection" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
