@@ -11,9 +11,9 @@
 
     <div class="title">Notation</div>
     <p>
-        <span class="rating-category">Spectateurs</span> [ {{model.movieDetails.ratings.userRatingCount}} ]<span class="stars">{{model.movieDetails.ratings.userRating | formatRating}}</span>
+        <span class="rating-category">Spectateurs</span> ( {{model.movieDetails.ratings.userRatingCount}} avis )<span class="stars">{{model.movieDetails.ratings.userRating | formatRating}}</span>
         <br/>
-        <span class="rating-category">Presse</span> [ {{model.movieDetails.ratings.pressReviewCount}} ]<span class="stars">{{model.movieDetails.ratings.pressRating | formatRating}}</span>
+        <span class="rating-category">Presse</span> ( {{model.movieDetails.ratings.pressReviewCount}} avis )<span class="stars">{{model.movieDetails.ratings.pressRating | formatRating}}</span>
     </p>
 
     <div class="title">Synopsis</div>
