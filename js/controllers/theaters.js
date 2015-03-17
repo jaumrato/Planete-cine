@@ -24,12 +24,14 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
         Service.getTheatersByGeolocation();
     };
 
-    $scope.onErrorGeolocation = function( e ) {
+    $scope.onErrorGeolocation = function() {
         var message = "La recherche géolocalisée nécessite l'activation du GPS.",
             title = "Activation du GPS",
             buttonLabels = ["Réessayer", "Annuler"];
         navigator.notification.confirm( message, function( index ){
-            alert( index )
+            if( index === 1 ){
+                $scope.launchTheaterSearchByGeolocation();
+            }
         }, title, buttonLabels );
     };
 
