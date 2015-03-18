@@ -29,6 +29,8 @@ app.service( 'Service', function( $http ) {
             }
         } ).then(
             function( resp ) {
+                resp.data.movie.helpfulPositiveReview = resp.data.movie.helpfulPositiveReview || [];
+                resp.data.movie.helpfulNegativeReview = resp.data.movie.helpfulNegativeReview || [];
                 this.model.movieDetails.synopsis = resp.data.movie.synopsis;
                 this.model.movieDetails.castMember = resp.data.movie.castMember;
                 this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
@@ -51,8 +53,10 @@ app.service( 'Service', function( $http ) {
                 code: this.model.movieDetails.trailer.code
             }
         } ).then( function( resp ) {
-            this.model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
-        }.bind( this ) );
+            if ( resp.data.media ) {
+                this.model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
+            }
+        }.bind( this ), function() {} );
     };
 
     this.getTheatersByGeolocation = function() {
@@ -205,6 +209,8 @@ app.service( 'Service', function( $http ) {
                 if ( this.model.showtimesDays.indexOf( day.d ) === -1 ) this.model.showtimesDays.push( day.d );
                 out[ day.d ] = out[ day.d ] || {};
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
+                    movie.onShow.movie.poster = movie.onShow.movie.poster || {};
+                    movie.onShow.movie.trailer = movie.onShow.movie.trailer || {};
                     out[ day.d ][ movie.onShow.movie.title ] = {
                         showtimes: {},
                         title: movie.onShow.movie.title,
@@ -213,7 +219,6 @@ app.service( 'Service', function( $http ) {
                         genres: movie.onShow.movie.genre,
                         thumbnail: movie.onShow.movie.poster.href,
                         runtime: movie.onShow.movie.runtime,
-                        release: movie.onShow.movie.release.releaseDate,
                         ratings: movie.onShow.movie.statistics,
                         trailer: movie.onShow.movie.trailer
                     };

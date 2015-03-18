@@ -4,6 +4,7 @@ app.filter( 'formatDay', function() {
     };
 } ).filter( 'formatRuntime', function() {
     return function( input ) {
+        if ( !input ) return 'Durée inconnue';
         var hours = Math.floor( input / 3600 );
         var minutes = Math.floor( ( input - ( hours * 3600 ) ) / 60 );
         if ( hours < 10 ) hours = "0" + hours;

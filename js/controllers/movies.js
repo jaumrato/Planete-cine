@@ -2,8 +2,10 @@ app.controller( 'moviesCtrl', function( $scope, Service ) {
 
     $scope.model = Service.model;
 
-    $scope.model.previousView = 'movies';
+    if ( $scope.model.previousView !== 'showtimesByTheater' ) {
+        Service.getNowShowingMovies();
+    }
 
-    Service.getNowShowingMovies();
+    $scope.model.previousView = 'movies';
 
 } );

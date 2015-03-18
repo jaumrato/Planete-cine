@@ -34,6 +34,7 @@ getConnection = function() {
 };
 
 document.addEventListener( 'deviceready', function() {
+    //window.addEventListener( 'load', function() {
 
     var checkConnection = function() {
         var connection = getConnection();
@@ -50,4 +51,5 @@ document.addEventListener( 'deviceready', function() {
     };
 
     checkConnection();
+    //angular.bootstrap( document.body, [ 'Application' ] );
 }, false );
