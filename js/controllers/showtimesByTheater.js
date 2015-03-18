@@ -4,6 +4,8 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.model.movieShowtimesByTheaters = {};
 
+    $scope.model.previousView = 'showtimesByTheater';
+
     $scope.getShowtimesListForAMovie = function() {
         if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
             navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
@@ -27,9 +29,9 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
     $scope.onErrorGeolocation = function() {
         var message = "L'activation du GPS est nécessaire afin de trouver les cinémas proposant ce film autour de vous.",
             title = "Activation du GPS",
-            buttonLabels = ["Réessayer", "Annuler"];
-        navigator.notification.confirm( message, function( index ){
-            if( index === 1 ){
+            buttonLabels = [ "Réessayer", "Annuler" ];
+        navigator.notification.confirm( message, function( index ) {
+            if ( index === 1 ) {
                 $scope.getShowtimesListForAMovie();
             }
         }, title, buttonLabels );

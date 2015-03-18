@@ -7,7 +7,7 @@ app.service( 'Service', function( $http ) {
     };
 
     this.showLoader = function( message ) {
-        this.model.loader.message = 'Chargement des séances ...';
+        this.model.loader.message = message;
         this.model.loader.status = true;
     };
 
@@ -27,17 +27,21 @@ app.service( 'Service', function( $http ) {
                 code: this.model.movieDetails.code,
                 striptags: 'synopsis,synopsisshort'
             }
-        } ).then( function( resp ) {
-            this.model.movieDetails.synopsis = resp.data.movie.synopsis;
-            this.model.movieDetails.castMember = resp.data.movie.castMember;
-            this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
-            this.model.movieDetails.negativeReview = resp.data.movie.helpfulNegativeReview[ 0 ];
-            this.hideLoader();
-        }.bind( this ) );
+        } ).then(
+            function( resp ) {
+                this.model.movieDetails.synopsis = resp.data.movie.synopsis;
+                this.model.movieDetails.castMember = resp.data.movie.castMember;
+                this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
+                this.model.movieDetails.negativeReview = resp.data.movie.helpfulNegativeReview[ 0 ];
+                this.hideLoader();
+            }.bind( this ),
+            function() {
+                this.hideLoader();
+            }.bind( this )
+        );
     };
 
     this.getTrailer = function() {
-        this.showLoader( 'Chargement des informations' );
         return $http.get( this.baseURL + '/media', {
             params: {
                 partner: 'YW5kcm9pZC12M3M',
@@ -48,7 +52,6 @@ app.service( 'Service', function( $http ) {
             }
         } ).then( function( resp ) {
             this.model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
-            this.hideLoader();
         }.bind( this ) );
     };
 
@@ -67,6 +70,9 @@ app.service( 'Service', function( $http ) {
             function( resp ) {
                 this.model.theaters = resp.data.feed.theater;
                 this.hideLoader();
+            }.bind( this ),
+            function() {
+                this.hideLoader();
             }.bind( this )
         );
     };
@@ -83,6 +89,9 @@ app.service( 'Service', function( $http ) {
         } ).then(
             function( resp ) {
                 this.model.theaters = resp.data.feed.theater;
+                this.hideLoader();
+            }.bind( this ),
+            function() {
                 this.hideLoader();
             }.bind( this )
         );
@@ -104,6 +113,9 @@ app.service( 'Service', function( $http ) {
             function( resp ) {
                 this.handleMovieShowtimesListByTheaters( resp.data.feed.theaterShowtimes );
                 this.hideLoader();
+            }.bind( this ),
+            function() {
+                this.hideLoader();
             }.bind( this )
         );
     };
@@ -121,6 +133,9 @@ app.service( 'Service', function( $http ) {
         } ).then(
             function( resp ) {
                 this.model.nowShowingMovies = resp.data.feed.movie;
+                this.hideLoader();
+            }.bind( this ),
+            function() {
                 this.hideLoader();
             }.bind( this )
         );
@@ -140,6 +155,9 @@ app.service( 'Service', function( $http ) {
             function( resp ) {
                 this.model.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
                 this.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes );
+                this.hideLoader();
+            }.bind( this ),
+            function() {
                 this.hideLoader();
             }.bind( this )
         );
@@ -220,7 +238,5 @@ app.service( 'Service', function( $http ) {
         },
         userSettings: JSON.parse( localStorage.userSettings )
     };
-
-    console.log( this.model );
 
 } );

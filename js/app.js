@@ -26,7 +26,28 @@ app.config( function( $routeProvider, $locationProvider ) {
 
 } );
 
-//document.addEventListener( 'deviceready', function() {
-window.addEventListener( 'load', function() {
-    angular.bootstrap( document.body, [ 'Application' ] );
+getConnection = function() {
+    var connection;
+    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) connection = false;
+    else connection = true;
+    return connection;
+};
+
+document.addEventListener( 'deviceready', function() {
+
+    var checkConnection = function() {
+        var connection = getConnection();
+        if ( connection ) {
+            angular.bootstrap( document.body, [ 'Application' ] );
+        } else {
+            var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
+                title = "Connexion internet",
+                buttonLabels = [ "Réessayer", "Annuler" ];
+            navigator.notification.confirm( message, function( index ) {
+                checkConnection();
+            }, title, buttonLabels );
+        }
+    };
+
+    checkConnection();
 }, false );

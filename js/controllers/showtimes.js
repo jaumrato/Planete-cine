@@ -2,7 +2,9 @@ app.controller( 'showtimesCtrl', function( $scope, $route, $routeParams, Service
 
     $scope.model = Service.model;
 
-    Service.getShowtimeList( $routeParams.theaterCode );
+    if ( $scope.model.previousView !== 'movieDetails' ) {
+        Service.getShowtimeList( $routeParams.theaterCode );
+    }
 
     $scope.isFavoriteTheater = function() {
         var out = false;

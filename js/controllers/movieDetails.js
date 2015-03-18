@@ -2,6 +2,8 @@ app.controller( 'movieDetailsCtrl', function( $scope, $routeParams, $sce, Servic
 
     $scope.model = Service.model;
 
+    $scope.model.previousView = 'movieDetails';
+
     Service.getMovieDetails();
 
 } );
