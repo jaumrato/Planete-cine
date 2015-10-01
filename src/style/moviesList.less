@@ -1,0 +1,41 @@
+.movies-list{
+
+    .movie{
+        display: block;
+        color: @darkGrey;
+        text-decoration: none;
+
+        &:nth-child(odd){
+            background-color: @light;
+        }
+
+        .details{
+            padding: 10px 0 10px 90px;
+            min-height: 80px;
+            background-size: 60px 80px;
+            background-position: 20px center;
+            background-repeat: no-repeat;
+        }
+
+        .title{
+            color: @darkBlue;
+            font-size: 14px;
+            font-family: 'robotobold';
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .genres{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .runtime{
+           margin: 0 0 10px 0;
+        }
+
+    }
+
+}

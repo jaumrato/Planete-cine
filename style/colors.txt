@@ -1,5 +1,0 @@
-dark blue : #28323C
-turquoise : #48c9b0
-dark grey : #777777
-light grey : #DDDDDD
-very light : #F5F5F5

@@ -1,0 +1,31 @@
+<video-player></video-player>
+
+<div class="title">Notation</div>
+<p>
+    <span class="rating-category">Spectateurs</span> ( {{model.movieDetails.ratings.userRatingCount}} avis )<span class="stars">{{model.movieDetails.ratings.userRating | formatRating}}</span>
+    <br/>
+    <span class="rating-category">Presse</span> ( {{model.movieDetails.ratings.pressReviewCount}} avis )<span class="stars">{{model.movieDetails.ratings.pressRating | formatRating}}</span>
+</p>
+
+<div class="title">Synopsis</div>
+<p>
+    {{model.movieDetails.synopsis}}
+</p>
+
+<div class="title">Casting</div>
+<p ng-repeat="item in model.movieDetails.castMember | limitTo:7" class="person">
+    <span class="thumbnail" style="background-image: url('{{item.picture.href}}');"></span>
+    <span class="name">{{item.person.name}}</span>
+    <span ng-if="item.activity.$ !== 'Acteur' && item.activity.$ !== 'Actrice'">{{item.activity.$}}</span>
+    <span ng-if="item.activity.$ === 'Acteur' || item.activity.$ === 'Actrice'">dans le rôle de {{item.role}}</span>
+</p>
+
+<div class="title">Un avis positif</div>
+<p>
+    {{model.movieDetails.positiveReview.body}}
+</p>
+
+<div class="title">Un avis négatif</div>
+<p>
+    {{model.movieDetails.negativeReview.body}}
+</p>

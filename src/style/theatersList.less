@@ -1,0 +1,43 @@
+.theaters-list{
+
+    .theater{
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: black;
+        border-bottom: 1px solid #EEEEEE;
+
+        &:nth-child(even){
+            background: @light;
+        }
+
+        .thumbnail{
+            width: 60px;
+            float: left;
+            height: 60px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 50%
+        }
+
+        .details{
+            width: 70%;
+            margin: 0 0 0 10px;
+            float: left;
+            color: @darkGrey;
+
+            .name{
+                font-family: 'robotobold';
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 14px;
+                color: @darkBlue;
+                margin: 3px 0;
+            }
+        }
+
+    }
+
+}
