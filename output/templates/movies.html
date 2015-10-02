@@ -1,16 +1,21 @@
-<div class="search-block movie-search-block">
-    <img src="assets/magnifier.svg" class="magnifier-icon" />
-    <input type="text" ng-model="model.search.title" placeholder="Rechercher le titre d'un film" autofocus="true"/>
+<div class="top-bar">
+    <a href="/#/" class="back"></a>
+    <div class="input-container">
+        <input type="search" ng-model="model.search.title" autofocus="true" placeholder="Entrer le titre d'un film"/>
+    </div>
 </div>
 
-<div class="movies-list">
-    <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" ng-click="model.currentMovie = movie">
-        <div class="details" style="background-image: url('{{movie.poster.href}}');">
-            <div class="title">{{movie.title}}</div>
-            <div class="genres">{{movie.genre | formatGenres}}</div>
-            <div class="runtime">{{movie.runtime | formatRuntime}}</div>
-            <div class="release">{{movie.release.releaseDate | formatRelease}}</div>
-            <div class="clear"></div>
-        </div>
-    </a>
+
+<div class="main-container movies">
+    <div class="movies-list">
+        <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" ng-click="model.currentMovie = movie">
+            <div class="details" style="background-image: url('{{movie.poster.href}}');">
+                <div class="title">{{movie.title}}</div>
+                <div class="genres">{{movie.genre | formatGenres}}</div>
+                <div class="runtime">{{movie.runtime | formatRuntime}}</div>
+                <div class="release">{{movie.release.releaseDate | formatRelease}}</div>
+                <div class="clear"></div>
+            </div>
+        </a>
+    </div>
 </div>

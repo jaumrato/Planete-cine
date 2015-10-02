@@ -1,19 +1,29 @@
-<div class="search-block theater-search-block">
-    <input type="text" ng-model="model.searchTheaterText" autofocus="true"/>
-    <img src="assets/magnifier.svg" class="magnifier-icon" ng-click="launchTheaterSearch()"/>
-    <img src="assets/geolocation.svg" class="geolocation-icon" ng-click="launchTheaterSearchByGeolocation()"/>
+<div class="top-bar">
+    <a href="/#/" class="back"></a>
+    <div class="input-container">
+        <input
+            type="search"
+            ng-model="model.searchTheaterText"
+            autofocus="true"
+            placeholder="Entrer le nom d'un cinéma"
+            ng-keypress="onKeyPress($event)"/>
+    </div>
+<!--     <img src="assets/magnifier.svg" class="magnifier-icon" ng-click="launchTheaterSearch()"/>
+    <img src="assets/geolocation.svg" class="geolocation-icon" ng-click="launchTheaterSearchByGeolocation()"/> -->
 </div>
 
-<div class="theaters-list">
-     <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.theaters" class="theater">
-        <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
-        <div class="details">
-            <div class="name">{{theater.name}}</div>
-            <div class="adress">
-                {{theater.address}}<br/>
-                {{theater.city}} - {{theater.postalCode}}
+<div class="main-container theaters">
+    <div class="theaters-list">
+         <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.theaters" class="theater">
+            <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
+            <div class="details">
+                <div class="name">{{theater.name}}</div>
+                <div class="adress">
+                    {{theater.address}}<br/>
+                    {{theater.city}} - {{theater.postalCode}}
+                </div>
             </div>
-        </div>
-        <div class="clear"></div>
-    </a>
+            <div class="clear"></div>
+        </a>
+    </div>
 </div>

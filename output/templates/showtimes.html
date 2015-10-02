@@ -1,8 +1,11 @@
 <div class="top-bar">
-    {{model.currentTheater.name}}
-    <span class="showtimes-favorite-star" ng-click="isFavoriteTheater() ? removeFromFavoriteTheaters() : addInFavoriteTheaters()">
+    <a href="/#/theaters" class="back"></a>
+    <div class="title-container">
+        {{model.currentTheater.name}}
+    </div>
+    <div class="favorite-star" ng-click="isFavoriteTheater() ? removeFromFavoriteTheaters() : addInFavoriteTheaters()">
         {{isFavoriteTheater() ? '★' : '☆'}}
-    </span>
+    </div>
 </div>
 
 <div class="days-bar">

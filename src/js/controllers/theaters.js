@@ -37,6 +37,10 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
         }, title, buttonLabels );
     };
 
+    $scope.onKeyPress = function( e ) {
+        if ( e.charCode === 13 ) Service.getTheaters();
+    };
+
     $scope.launchTheaterSearch = function() {
         Service.getTheaters();
     };
