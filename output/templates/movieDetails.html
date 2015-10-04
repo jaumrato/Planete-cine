@@ -1,12 +1,11 @@
 <div class="top-bar">
     <a href="/#/theaters" class="back"></a>
-    <div class="title-container">
-    </div>
+    <div class="title-container">{{model.movieDetails.title}}</div>
 </div>
 
 <div class="main-container movie-details">
 
-    <video-player></video-player>
+    <video-player ng-if="model.movieDetails.trailer"></video-player>
 
     <div class="title">Notation</div>
     <p>

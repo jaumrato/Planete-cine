@@ -35,6 +35,8 @@ app.service( 'Service', function( $http, $routeParams ) {
                 this.model.movieDetails.castMember = resp.data.movie.castMember;
                 this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
                 this.model.movieDetails.negativeReview = resp.data.movie.helpfulNegativeReview[ 0 ];
+                this.model.movieDetails.title = resp.data.movie.title;
+                this.model.movieDetails.trailer = resp.data.movie.trailer;
                 this.hideLoader();
             }.bind( this ),
             function() {
