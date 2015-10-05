@@ -2,10 +2,6 @@ app.controller( 'theatersCtrl', function( $scope, Service ) {
 
     $scope.model = Service.model;
 
-    $scope.model.previousView = 'theaters';
-
-    $scope.state = 'theaters';
-
     $scope.launchTheaterSearchByGeolocation = function() {
         if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
             navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {

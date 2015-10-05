@@ -7,6 +7,11 @@
 
     <video-player ng-if="model.movieDetails.trailer"></video-player>
 
+    <p>
+        <a class="button" ng-href="#/showtimesByTheater/gps/{{code}}">Près de moi</a>
+        <a class="button right" ng-href="#/showtimesByTheater/favorites/{{code}}">Cinémas favoris</a>
+    </p>
+
     <div class="title">Notation</div>
     <p>
         <span class="rating-category">Spectateurs</span> ( {{model.movieDetails.ratings.userRatingCount}} avis )<span class="stars">{{model.movieDetails.ratings.userRating | formatRating}}</span>

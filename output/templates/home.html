@@ -1,4 +1,5 @@
 <div class="main-container home">
+
     <div class="theaters-list" ng-if="model.userSettings.favoriteTheaters.length > 0">
         <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.userSettings.favoriteTheaters" class="theater">
             <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
@@ -24,4 +25,5 @@
         <a href="#/theaters" class="button search_theater">Rechercher un cinéma</a>
         <a href="#/movies" class="button search_movie">Rechercher un film</a>
     </div>
+    
 </div>

@@ -14,7 +14,7 @@ app.config( function( $routeProvider ) {
     } ).when( '/showtimes/:theaterCode', {
         templateUrl: 'templates/showtimes.html',
         controller: 'showtimesCtrl'
-    } ).when( '/showtimesByTheater/:movieCode', {
+    } ).when( '/showtimesByTheater/:searchMode/:movieCode', {
         templateUrl: 'templates/showtimesByTheater.html',
         controller: 'showtimesByTheaterCtrl'
     } ).when( '/movieDetails/:movieCode', {
@@ -23,7 +23,6 @@ app.config( function( $routeProvider ) {
     } ).otherwise( {
         redirectTo: '/'
     } );
-
 
 } );
 

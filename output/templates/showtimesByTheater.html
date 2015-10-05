@@ -1,8 +1,6 @@
 <div class="top-bar">
-    <a href="#/movies">
-        <img src="assets/arrow-left-white.svg" class="back-icon"/>
-    </a>
-    {{model.currentMovie.title}}
+    <a ng-href="{{model.previousLocation}}" class="back"></a>
+    <div class="title-container">{{model.movieDetails.title}}</div>
 </div>
 
 <div class="days-bar">

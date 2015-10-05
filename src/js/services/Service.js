@@ -1,4 +1,4 @@
-app.service( 'Service', function( $http, $routeParams ) {
+app.service( 'Service', function( $http ) {
 
     this.baseURL = 'http://api.allocine.fr/rest/v3';
 
@@ -16,7 +16,7 @@ app.service( 'Service', function( $http, $routeParams ) {
         this.model.loader.status = false;
     };
 
-    this.getMovieDetails = function() {
+    this.getMovieDetails = function( code ) {
         this.showLoader( 'Chargement des informations' );
         return $http.get( this.baseURL + '/movie', {
             params: {
@@ -24,7 +24,7 @@ app.service( 'Service', function( $http, $routeParams ) {
                 format: 'json',
                 mediafmt: 'mp4-lc',
                 profile: 'medium',
-                code: $routeParams.movieCode,
+                code: code,
                 striptags: 'synopsis,synopsisshort'
             }
         } ).then(
@@ -240,6 +240,7 @@ app.service( 'Service', function( $http, $routeParams ) {
     this.model = {
         moviesShowtimesForATheater: null,
         movieDetails: {},
+        movieShowtimesByTheaters: {},
         nowShowingMovies: null,
         lastAction: Date.now(),
         previousLocation: '/#/',

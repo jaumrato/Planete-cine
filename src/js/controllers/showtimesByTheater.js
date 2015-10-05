@@ -2,11 +2,13 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.model = Service.model;
 
-    $scope.model.movieShowtimesByTheaters = {};
-
-    $scope.model.previousView = 'showtimesByTheater';
+    $scope.code = $routeParams.movieCode;
 
     $scope.getShowtimesListForAMovie = function() {
+
+        // Use searchMode to search with GPS or with favorites theaters.
+        console.log( $routeParams.searchMode );
+
         if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
             navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
                 maximumAge: 0,
