@@ -138,6 +138,7 @@ app.service( 'Service', function( $http, $routeParams ) {
             }
         } ).then(
             function( resp ) {
+                this.model.lastAction = Date.now();
                 this.model.nowShowingMovies = resp.data.feed.movie.map( function( movie ) {
                     if ( movie.poster && movie.poster.href )
                         movie.poster.href = movie.poster.href.replace( '/pictures', '/r_60_x/pictures' );
@@ -193,8 +194,8 @@ app.service( 'Service', function( $http, $routeParams ) {
                         out[ day.d ][ item.place.theater.code ].showtimes = {};
                     }
                     out[ day.d ][ item.place.theater.code ].showtimes[ this.getShowtimeVersion( movie ) ] = day.t;
-                }.bind( this ) );
-            }.bind( this ) );
+                }, this );
+            }, this );
             for ( var day in out ) {
                 var theatersList = [];
                 for ( var code in out[ day ] ) {
@@ -203,7 +204,7 @@ app.service( 'Service', function( $http, $routeParams ) {
                 out[ day ] = theatersList;
             }
             this.model.movieShowtimesByTheaters = out;
-        }.bind( this ) );
+        }, this );
     };
 
     this.handleShowtimesList = function( movies ) {
@@ -216,23 +217,18 @@ app.service( 'Service', function( $http, $routeParams ) {
                 out[ day.d ] = out[ day.d ] || {};
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
                     movie.onShow.movie.poster = movie.onShow.movie.poster || {};
-                    movie.onShow.movie.trailer = movie.onShow.movie.trailer || {};
                     out[ day.d ][ movie.onShow.movie.title ] = {
                         showtimes: {},
                         title: movie.onShow.movie.title,
-                        casting: movie.onShow.movie.castingShort,
                         code: movie.onShow.movie.code,
-                        genres: movie.onShow.movie.genre,
                         thumbnail: movie.onShow.movie.poster.href.replace( '/pictures', '/r_60_x/pictures' ),
-                        runtime: movie.onShow.movie.runtime,
-                        ratings: movie.onShow.movie.statistics,
-                        trailer: movie.onShow.movie.trailer
+                        runtime: movie.onShow.movie.runtime
                     };
                 }
                 var version = this.getShowtimeVersion( movie );
                 out[ day.d ][ movie.onShow.movie.title ].showtimes[ version ] = day.t;
-            }.bind( this ) );
-        }.bind( this ) );
+            }, this );
+        }, this );
         this.model.showtimesDays.sort();
         this.model.moviesShowtimesForATheater = out;
     };
@@ -244,6 +240,9 @@ app.service( 'Service', function( $http, $routeParams ) {
     this.model = {
         moviesShowtimesForATheater: null,
         movieDetails: {},
+        nowShowingMovies: null,
+        lastAction: Date.now(),
+        previousLocation: '/#/',
         loader: {
             status: false,
             messsage: ''
