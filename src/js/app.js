@@ -10,7 +10,13 @@ app.config( function( $routeProvider ) {
         controller: 'theatersCtrl'
     } ).when( '/movies', {
         templateUrl: 'templates/movies.html',
-        controller: 'moviesCtrl'
+        controller: 'moviesCtrl',
+        resolve: {
+            haveToRefresh: function(  ){
+                // check lastUpdate or previous state
+                return true;
+            }
+        }
     } ).when( '/showtimes/:theaterCode', {
         templateUrl: 'templates/showtimes.html',
         controller: 'showtimesCtrl'
