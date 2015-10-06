@@ -216,7 +216,9 @@ app.service( 'Service', function( $http ) {
                 if ( this.model.showtimesDays.indexOf( day.d ) === -1 ) this.model.showtimesDays.push( day.d );
                 out[ day.d ] = out[ day.d ] || {};
                 if ( out[ day.d ][ movie.onShow.movie.title ] === undefined ) {
-                    movie.onShow.movie.poster = movie.onShow.movie.poster || {};
+                    movie.onShow.movie.poster = movie.onShow.movie.poster || {
+                        href: ""
+                    };
                     out[ day.d ][ movie.onShow.movie.title ] = {
                         showtimes: {},
                         title: movie.onShow.movie.title,
