@@ -4,19 +4,21 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
 
     $scope.code = $routeParams.movieCode;
 
+    $scope.searchMode = $routeParams.searchMode;
+
     $scope.getShowtimesListForAMovie = function() {
-
-        // Use searchMode to search with GPS or with favorites theaters.
-        console.log( $routeParams.searchMode );
-
-        if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
-            navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
-                maximumAge: 0,
-                timeout: 1000,
-                enableHighAccuracy: true
-            } );
-        } else {
-            $scope.onErrorGeolocation();
+        if ( $routeParams.searchMode === 'gps' ) {
+            if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
+                navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
+                    maximumAge: 0,
+                    timeout: 1000,
+                    enableHighAccuracy: true
+                } );
+            } else {
+                $scope.onErrorGeolocation();
+            }
+        } else if ( $routeParams.searchMode === 'favorites' ) {
+            Service.getShowtimesListForAMovie( $routeParams.movieCode, $routeParams.searchMode );
         }
     };
 
@@ -25,7 +27,7 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Servic
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         };
-        Service.getShowtimesListForAMovie( $routeParams.movieCode );
+        Service.getShowtimesListForAMovie( $routeParams.movieCode, $routeParams.searchMode );
     };
 
     $scope.onErrorGeolocation = function() {

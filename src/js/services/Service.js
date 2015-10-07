@@ -103,18 +103,28 @@ app.service( 'Service', function( $http ) {
         );
     };
 
-    this.getShowtimesListForAMovie = function( code ) {
+    this.getShowtimesListForAMovie = function( movieCode, mode ) {
         this.showLoader( 'Chargement des séances' );
+
+        var params = {
+            partner: 'YW5kcm9pZC12M3M',
+            format: 'json',
+            count: 30,
+            movie: movieCode
+        };
+
+        if ( mode === "gps" ) {
+            params.radius = 30;
+            params.lat = this.model.position.latitude;
+            params.long = this.model.position.longitude;
+        } else if ( mode === "favorites" ) {
+            params.theaters = this.model.userSettings.favoriteTheaters.map( function( theater ) {
+                return theater.code;
+            } ).join( ',' );
+        }
+
         $http.get( this.baseURL + '/showtimelist', {
-            params: {
-                partner: 'YW5kcm9pZC12M3M',
-                format: 'json',
-                radius: 30,
-                count: 30,
-                lat: this.model.position.latitude,
-                long: this.model.position.longitude,
-                movie: code
-            }
+            params: params
         } ).then(
             function( resp ) {
                 this.handleMovieShowtimesListByTheaters( resp.data.feed.theaterShowtimes );
@@ -138,7 +148,6 @@ app.service( 'Service', function( $http ) {
             }
         } ).then(
             function( resp ) {
-                this.model.lastAction = Date.now();
                 this.model.nowShowingMovies = resp.data.feed.movie.map( function( movie ) {
                     if ( movie.poster && movie.poster.href )
                         movie.poster.href = movie.poster.href.replace( '/pictures', '/r_60_x/pictures' );
@@ -244,7 +253,6 @@ app.service( 'Service', function( $http ) {
         movieDetails: {},
         movieShowtimesByTheaters: {},
         nowShowingMovies: null,
-        lastAction: Date.now(),
         previousLocation: '/#/',
         loader: {
             status: false,

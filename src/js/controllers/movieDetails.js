@@ -1,9 +1,13 @@
-app.controller( 'movieDetailsCtrl', function( $scope, Service, $routeParams ) {
+app.controller( 'movieDetailsCtrl', function( $scope, Service, displayShowtimesButtons, back, $routeParams ) {
 
-	$scope.model = Service.model;
+    $scope.model = Service.model;
 
-	$scope.code = $routeParams.movieCode;
+    $scope.displayShowtimesButtons = displayShowtimesButtons;
 
-	Service.getMovieDetails( $scope.code );
+    $scope.back = back;
+
+    $scope.code = $routeParams.movieCode;
+
+    Service.getMovieDetails( $scope.code );
 
 } );

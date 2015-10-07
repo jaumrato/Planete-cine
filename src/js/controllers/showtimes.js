@@ -1,8 +1,10 @@
-app.controller( 'showtimesCtrl', function( $scope, $routeParams, Service ) {
+app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service ) {
 
     $scope.model = Service.model;
 
-    Service.getShowtimeList( $routeParams.theaterCode );
+    $scope.back = back;
+
+    if ( haveToRefresh ) Service.getShowtimeList( $routeParams.theaterCode );
 
     $scope.isFavoriteTheater = function() {
         var out = false;

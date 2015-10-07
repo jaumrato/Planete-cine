@@ -32,4 +32,16 @@
         </div>
     </div>
 
+    <div ng-if="model.movieShowtimesByTheaters.length < 1" class="empty-theaters-list">
+        <div class="vertical-center">
+            <div class="title">Aucun cinéma trouvé</div>
+            <div class="message" ng-if="searchMode === 'gps'">
+                Nous n'avons trouvé aucun cinéma proche de vous diffusant ce film.
+            </div>
+            <div class="message" ng-if="searchMode === 'favorites'">
+                Aucun de vos cinémas favoris ne diffusent ce film.
+            </div>
+        </div>
+    </div>
+
 </div>

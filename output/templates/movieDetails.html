@@ -1,5 +1,5 @@
 <div class="top-bar">
-    <a ng-href="{{model.previousLocation}}" class="back"></a>
+    <a ng-href="{{back}}" class="back"></a>
     <div class="title-container">{{model.movieDetails.title}}</div>
 </div>
 
@@ -7,7 +7,7 @@
 
     <video-player ng-if="model.movieDetails.trailer"></video-player>
 
-    <p>
+    <p ng-if="displayShowtimesButtons">
         <a class="button" ng-href="#/showtimesByTheater/gps/{{code}}">Près de moi</a>
         <a class="button right" ng-href="#/showtimesByTheater/favorites/{{code}}">Cinémas favoris</a>
     </p>
