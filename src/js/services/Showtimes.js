@@ -21,7 +21,6 @@ app.factory( 'Showtimes', function( $http, Model, Service ) {
 
         handleShowtimesList: function( movies ) {
             var out = {};
-            Model.currentDay = 0;
             Model.showtimesDays = [];
             movies.forEach( function( movie ) {
                 movie.scr.forEach( function( day ) {
@@ -44,6 +43,7 @@ app.factory( 'Showtimes', function( $http, Model, Service ) {
                 } );
             } );
             Model.showtimesDays.sort();
+            Model.currentDay = Model.showtimesDays[ 0 ];
             Model.moviesShowtimesForATheater = out;
         }
 

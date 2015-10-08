@@ -175,12 +175,28 @@ input{
     height: 50px;
     left: 0;
     right: 0;
-    text-align: center;
     z-index: 10;
     background: #FFF;
-    padding: 0 20px;
     border-bottom: 1px solid @lightGrey;
-    line-height: 47px;
+
+    select{
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
+        border: 0;
+        background: #FFF;
+        font-size: 16px;
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+    &:after{
+        content: '▼';
+        position: absolute;
+        right: 18px;
+        top: 15px;
+        font-size: 14px;
+    }
 
     .arrows{
         width: 10px;

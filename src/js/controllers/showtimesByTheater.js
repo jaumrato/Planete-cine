@@ -1,54 +1,38 @@
-app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Service ) {
+app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model, ShowtimesByTheater ) {
 
-    $scope.model = Service.model;
-
-    $scope.code = $routeParams.movieCode;
+    $scope.model = Model;
 
     $scope.searchMode = $routeParams.searchMode;
 
-    $scope.getShowtimesListForAMovie = function() {
-        if ( $routeParams.searchMode === 'gps' ) {
-            if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
-                navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
-                    maximumAge: 0,
-                    timeout: 1000,
-                    enableHighAccuracy: true
-                } );
-            } else {
-                $scope.onErrorGeolocation();
-            }
-        } else if ( $routeParams.searchMode === 'favorites' ) {
-            Service.getShowtimesListForAMovie( $routeParams.movieCode, $routeParams.searchMode );
+    $scope.geolocationSearch = function() {
+        try {
+            navigator.geolocation.getCurrentPosition(
+                $scope.onSuccessGeolocation,
+                $scope.onErrorGeolocation,
+                Model.geolocationParams
+            );
+        } catch ( err ) {
+            $scope.onErrorGeolocation();
         }
     };
 
     $scope.onSuccessGeolocation = function( position ) {
-        $scope.model.position = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        };
-        Service.getShowtimesListForAMovie( $routeParams.movieCode, $routeParams.searchMode );
+        ShowtimesByTheater.getShowtimeList( $routeParams.movieCode, $routeParams.searchMode, position.coords );
     };
 
     $scope.onErrorGeolocation = function() {
-        var message = "L'activation du GPS est nécessaire afin de trouver les cinémas proposant ce film autour de vous.",
-            title = "Activation du GPS",
-            buttonLabels = [ "Réessayer", "Annuler" ];
-        navigator.notification.confirm( message, function( index ) {
-            if ( index === 1 ) {
-                $scope.getShowtimesListForAMovie();
-            }
-        }, title, buttonLabels );
+        navigator.notification.confirm( "La recherche géolocalisée nécessite l'activation du GPS.",
+            function( index ) {
+                if ( index === 1 ) $scope.geolocationSearch();
+            },
+            "Activation du GPS", [ "Réessayer", "Annuler" ]
+        );
     };
 
-    $scope.nextDay = function() {
-        $scope.model.currentDay += 1;
-    };
-
-    $scope.prevDay = function() {
-        $scope.model.currentDay -= 1;
-    };
-
-    $scope.getShowtimesListForAMovie();
+    if ( $routeParams.searchMode === 'gps' ) {
+        $scope.geolocationSearch();
+    } else if ( $routeParams.searchMode === 'favorites' ) {
+        ShowtimesByTheater.getShowtimeList( $routeParams.movieCode, $routeParams.searchMode, {} );
+    }
 
 } );

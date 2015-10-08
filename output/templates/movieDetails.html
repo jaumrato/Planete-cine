@@ -9,7 +9,8 @@
 
     <p ng-if="displayShowtimesButtons">
         <a class="button" ng-href="#/showtimesByTheater/gps/{{code}}">Près de moi</a>
-        <a class="button right" ng-href="#/showtimesByTheater/favorites/{{code}}">Cinémas favoris</a>
+        <a class="button right" ng-if="model.userSettings.favoriteTheaters.length > 0" ng-href="#/showtimesByTheater/favorites/{{code}}"> Cinémas favoris </a>
+        <span class="button right grey" ng-if="model.userSettings.favoriteTheaters.length === 0">Cinémas favoris</span>
     </p>
 
     <div class="title">Notation</div>

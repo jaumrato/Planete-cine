@@ -10,21 +10,13 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
 
     $scope.toggleFavorite = function() {
         if ( $scope.isFavorite ) {
-            Model.userSettings.favoriteTheaters.push( Model.currentTheater );
-        } else {
             var index = Model.userSettings.favoriteTheaters.indexOf( $routeParams.theaterCode );
             Model.userSettings.favoriteTheaters.splice( index, 1 );
+        } else {
+            Model.userSettings.favoriteTheaters.push( Model.currentTheater );
         }
         $scope.isFavorite = !$scope.isFavorite;
         Service.saveUserSettings();
-    };
-
-    $scope.nextDay = function() {
-        Model.currentDay += 1;
-    };
-
-    $scope.prevDay = function() {
-        Model.currentDay -= 1;
     };
 
     if ( haveToRefresh ) Showtimes.getShowtimeList( $routeParams.theaterCode );

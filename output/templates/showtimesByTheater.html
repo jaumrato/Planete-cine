@@ -4,15 +4,13 @@
 </div>
 
 <div class="days-bar">
-    <img src="assets/arrow-left-green.svg" ng-if="model.currentDay > 0" ng-click="prevDay()" class="arrows left"/>
-    {{model.showtimesDays[model.currentDay] | formatDay}}
-    <img src="assets/arrow-right-green.svg" ng-if="model.currentDay < model.showtimesDays.length - 1" ng-click="nextDay()" class="arrows right"/>
+    <select ng-options="day as day | formatDay for day in model.showtimesDays" ng-model="model.currentDay"></select>
 </div>
 
 <div class="showtimes-by-theater main-container">
 
-    <div class="theaters-list">
-        <div ng-repeat="theater in model.movieShowtimesByTheaters[ model.showtimesDays[ model.currentDay ] ] | orderBy:'distance'" class="theater">
+    <div class="theaters-list" ng-if="model.showtimesDays.length > 0">
+        <div ng-repeat="theater in model.movieShowtimesByTheaters[ model.currentDay ] | orderBy:'distance'" class="theater">
             <div class="theater-details">
                 <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
                 <div class="details">
@@ -32,14 +30,14 @@
         </div>
     </div>
 
-    <div ng-if="model.movieShowtimesByTheaters.length < 1" class="empty-theaters-list">
+    <div ng-if="model.showtimesDays.length === 0" class="empty-theaters-list">
         <div class="vertical-center">
             <div class="title">Aucun cinéma trouvé</div>
             <div class="message" ng-if="searchMode === 'gps'">
                 Nous n'avons trouvé aucun cinéma proche de vous diffusant ce film.
             </div>
             <div class="message" ng-if="searchMode === 'favorites'">
-                Aucun de vos cinémas favoris ne diffusent ce film.
+                Nous n'avons trouvé aucun de vos cinémas favoris diffusant ce film.
             </div>
         </div>
     </div>

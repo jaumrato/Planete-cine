@@ -9,13 +9,11 @@
 </div>
 
 <div class="days-bar">
-    <img src="assets/arrow-left-green.svg" ng-show="model.currentDay > 0" ng-click="prevDay()" class="arrows left"/>
-    {{model.showtimesDays[model.currentDay] | formatDay}}
-    <img src="assets/arrow-right-green.svg" ng-show="model.currentDay < model.showtimesDays.length - 1" ng-click="nextDay()" class="arrows right"/>
+    <select ng-options="day as day | formatDay for day in model.showtimesDays" ng-model="model.currentDay"></select>
 </div>
 
 <div class="showtimes main-container movies-list">
-    <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.showtimesDays[model.currentDay] ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}">
+    <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}">
         <div class="details" style="background-image: url('{{movie.thumbnail}}');">
             <div class="title">{{title}}</div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>
