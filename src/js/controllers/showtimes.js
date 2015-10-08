@@ -1,14 +1,14 @@
-app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service ) {
+app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service, Showtimes, Model ) {
 
-    $scope.model = Service.model;
+    $scope.model = Model;
 
     $scope.back = back;
 
-    if ( haveToRefresh ) Service.getShowtimeList( $routeParams.theaterCode );
+    if ( haveToRefresh ) Showtimes.getShowtimeList( $routeParams.theaterCode );
 
     $scope.isFavoriteTheater = function() {
         var out = false;
-        $scope.model.userSettings.favoriteTheaters.forEach( function( theater ) {
+        Model.userSettings.favoriteTheaters.forEach( function( theater ) {
             if ( theater.code === $routeParams.theaterCode )
                 out = true;
         } );
@@ -16,22 +16,22 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
     };
 
     $scope.addInFavoriteTheaters = function() {
-        $scope.model.userSettings.favoriteTheaters.push( $scope.model.currentTheater );
+        Model.userSettings.favoriteTheaters.push( Model.currentTheater );
         Service.saveUserSettings();
     };
 
     $scope.nextDay = function() {
-        $scope.model.currentDay += 1;
+        Model.currentDay += 1;
     };
 
     $scope.prevDay = function() {
-        $scope.model.currentDay -= 1;
+        Model.currentDay -= 1;
     };
 
     $scope.removeFromFavoriteTheaters = function() {
-        $scope.model.userSettings.favoriteTheaters.forEach( function( theater, index ) {
+        Model.userSettings.favoriteTheaters.forEach( function( theater, index ) {
             if ( theater.code === $routeParams.theaterCode )
-                $scope.model.userSettings.favoriteTheaters.splice( index, 1 );
+                Model.userSettings.favoriteTheaters.splice( index, 1 );
         } );
         Service.saveUserSettings();
     };

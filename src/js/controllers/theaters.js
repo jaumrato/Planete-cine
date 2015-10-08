@@ -1,44 +1,34 @@
-app.controller( 'theatersCtrl', function( $scope, Service ) {
+app.controller( 'theatersCtrl', function( $scope, Model, Theaters ) {
 
-    $scope.model = Service.model;
+    $scope.model = Model;
 
-    $scope.launchTheaterSearchByGeolocation = function() {
-        if ( navigator.geolocation && navigator.geolocation.getCurrentPosition ) {
-            navigator.geolocation.getCurrentPosition( $scope.onSuccessGeolocation, $scope.onErrorGeolocation, {
-                maximumAge: 0,
-                timeout: 1000,
-                enableHighAccuracy: true
-            } );
-        } else {
+    $scope.geolocationSearch = function() {
+        try {
+            navigator.geolocation.getCurrentPosition(
+                $scope.onSuccessGeolocation,
+                $scope.onErrorGeolocation,
+                Model.geolocationParams
+            );
+        } catch ( err ) {
             $scope.onErrorGeolocation();
         }
     };
 
     $scope.onSuccessGeolocation = function( position ) {
-        $scope.model.position = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-        };
-        Service.getTheatersByGeolocation();
+        Theaters.search( 'gps', position.coords );
     };
 
     $scope.onErrorGeolocation = function() {
-        var message = "La recherche géolocalisée nécessite l'activation du GPS.",
-            title = "Activation du GPS",
-            buttonLabels = [ "Réessayer", "Annuler" ];
-        navigator.notification.confirm( message, function( index ) {
-            if ( index === 1 ) {
-                $scope.launchTheaterSearchByGeolocation();
-            }
-        }, title, buttonLabels );
+        navigator.notification.confirm( "La recherche géolocalisée nécessite l'activation du GPS.",
+            function( index ) {
+                if ( index === 1 ) $scope.geolocationSearch();
+            },
+            "Activation du GPS", [ "Réessayer", "Annuler" ]
+        );
     };
 
     $scope.onKeyPress = function( e ) {
-        if ( e.charCode === 13 ) Service.getTheaters();
-    };
-
-    $scope.launchTheaterSearch = function() {
-        Service.getTheaters();
+        if ( e.charCode === 13 ) Theaters.search( 'text', Model.searchTheaterText );
     };
 
 } );

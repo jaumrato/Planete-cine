@@ -1,7 +1,7 @@
-app.controller( 'moviesCtrl', function( $scope, Service, haveToRefresh ) {
+app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh ) {
 
-    $scope.model = Service.model;
+    $scope.model = Model;
 
-    if ( haveToRefresh ) Service.getNowShowingMovies();
+    if ( haveToRefresh ) Movies.getMoviesList();
 
 } );

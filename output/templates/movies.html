@@ -1,14 +1,13 @@
 <div class="top-bar">
     <a href="#/" class="back"></a>
     <div class="input-container">
-        <input type="search" ng-model="model.search.title" autofocus="true" placeholder="Entrer le titre d'un film"/>
+        <input type="search" ng-model="filter" autofocus="true" placeholder="Entrer le titre d'un film"/>
     </div>
 </div>
 
-
 <div class="main-container movies">
     <div class="movies-list">
-        <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:model.search" ng-click="model.currentMovie = movie">
+        <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:filter">
             <div class="details" style="background-image: url('{{movie.poster.href}}');">
                 <div class="title">{{movie.title}}</div>
                 <div class="genres">{{movie.genre | formatGenres}}</div>
