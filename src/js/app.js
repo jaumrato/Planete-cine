@@ -70,7 +70,6 @@ getConnection = function() {
 };
 
 document.addEventListener( 'deviceready', function() {
-    StatusBar.backgroundColorByHexString( "#38BCA2" );
     var checkConnection = function() {
         var connection = getConnection();
         if ( connection ) {
