@@ -25,51 +25,6 @@ app.service( 'Service', function( $http, Model ) {
         }
     };
 
-    this.getMovieDetails = function( code ) {
-        this.showLoader( 'Chargement des informations' );
-        return $http.get( this.baseURL + '/movie', {
-            params: {
-                partner: 'YW5kcm9pZC12M3M',
-                format: 'json',
-                mediafmt: 'mp4-lc',
-                profile: 'medium',
-                code: code,
-                striptags: 'synopsis,synopsisshort'
-            }
-        } ).then(
-            function( resp ) {
-                resp.data.movie.helpfulPositiveReview = resp.data.movie.helpfulPositiveReview || [];
-                resp.data.movie.helpfulNegativeReview = resp.data.movie.helpfulNegativeReview || [];
-                this.model.movieDetails.synopsis = resp.data.movie.synopsis;
-                this.model.movieDetails.castMember = resp.data.movie.castMember;
-                this.model.movieDetails.positiveReview = resp.data.movie.helpfulPositiveReview[ 0 ];
-                this.model.movieDetails.negativeReview = resp.data.movie.helpfulNegativeReview[ 0 ];
-                this.model.movieDetails.title = resp.data.movie.title;
-                this.model.movieDetails.trailer = resp.data.movie.trailer;
-                this.hideLoader();
-            }.bind( this ),
-            function() {
-                this.hideLoader();
-            }.bind( this )
-        );
-    };
-
-    this.getTrailer = function() {
-        return $http.get( this.baseURL + '/media', {
-            params: {
-                partner: 'YW5kcm9pZC12M3M',
-                format: 'json',
-                mediafmt: 'mp4-lc',
-                profile: 'medium',
-                code: this.model.movieDetails.trailer.code
-            }
-        } ).then( function( resp ) {
-            if ( resp.data.media ) {
-                this.model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
-            }
-        }.bind( this ), function() {} );
-    };
-
     this.getShowtimesListForAMovie = function( movieCode, mode ) {
         this.showLoader( 'Chargement des séances' );
 

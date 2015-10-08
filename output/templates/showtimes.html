@@ -3,8 +3,8 @@
     <div class="title-container">
         {{model.currentTheater.name}}
     </div>
-    <div class="favorite-star" ng-click="isFavoriteTheater() ? removeFromFavoriteTheaters() : addInFavoriteTheaters()">
-        {{isFavoriteTheater() ? '★' : '☆'}}
+    <div class="favorite-star" ng-click="toggleFavorite()">
+        {{isFavorite ? '★' : '☆'}}
     </div>
 </div>
 

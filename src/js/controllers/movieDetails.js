@@ -1,13 +1,14 @@
-app.controller( 'movieDetailsCtrl', function( $scope, Service, displayShowtimesButtons, back, $routeParams ) {
+app.controller( 'movieDetailsCtrl', function( $scope, MovieDetails, Model, displayShowtimesButtons, back, $routeParams ) {
 
-    $scope.model = Service.model;
-
+    $scope.model = Model;
     $scope.displayShowtimesButtons = displayShowtimesButtons;
-
     $scope.back = back;
-
     $scope.code = $routeParams.movieCode;
 
-    Service.getMovieDetails( $scope.code );
+    MovieDetails.getMovieDetails( $scope.code ).then( function() {
+        if ( Model.movieDetails.trailer && Model.movieDetails.trailer.code ) {
+            MovieDetails.getTrailer( Model.movieDetails.trailer.code );
+        }
+    } );
 
 } );

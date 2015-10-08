@@ -6,7 +6,7 @@ app.factory( 'Model', function() {
 
         moviesShowtimesForATheater: null,
 
-        movieDetails: {},
+        movieDetails: null,
 
         movieShowtimesByTheaters: {},
 

@@ -4,19 +4,18 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
 
     $scope.back = back;
 
-    if ( haveToRefresh ) Showtimes.getShowtimeList( $routeParams.theaterCode );
+    $scope.isFavorite = Model.userSettings.favoriteTheaters.map( function( theater ) {
+        return theater.code;
+    } ).indexOf( $routeParams.theaterCode ) > -1;
 
-    $scope.isFavoriteTheater = function() {
-        var out = false;
-        Model.userSettings.favoriteTheaters.forEach( function( theater ) {
-            if ( theater.code === $routeParams.theaterCode )
-                out = true;
-        } );
-        return out;
-    };
-
-    $scope.addInFavoriteTheaters = function() {
-        Model.userSettings.favoriteTheaters.push( Model.currentTheater );
+    $scope.toggleFavorite = function() {
+        if ( $scope.isFavorite ) {
+            Model.userSettings.favoriteTheaters.push( Model.currentTheater );
+        } else {
+            var index = Model.userSettings.favoriteTheaters.indexOf( $routeParams.theaterCode );
+            Model.userSettings.favoriteTheaters.splice( index, 1 );
+        }
+        $scope.isFavorite = !$scope.isFavorite;
         Service.saveUserSettings();
     };
 
@@ -28,12 +27,6 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
         Model.currentDay -= 1;
     };
 
-    $scope.removeFromFavoriteTheaters = function() {
-        Model.userSettings.favoriteTheaters.forEach( function( theater, index ) {
-            if ( theater.code === $routeParams.theaterCode )
-                Model.userSettings.favoriteTheaters.splice( index, 1 );
-        } );
-        Service.saveUserSettings();
-    };
+    if ( haveToRefresh ) Showtimes.getShowtimeList( $routeParams.theaterCode );
 
 } );
