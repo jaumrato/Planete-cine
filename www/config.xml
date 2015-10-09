@@ -61,36 +61,21 @@
     <!-- default -->
     <icon src="icon.png" />
 
-    <!-- ANDROID ICONS -->
-    <icon src="res/icon/android/icon-36-ldpi.png" platform="android" width="36" height="36" density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png" platform="android" width="48" height="48" density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png" platform="android" width="72" height="72" density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png" platform="android" width="96" height="96" density="xhdpi" />
-    <icon src="res/icon/android/icon-144-xxhdpi.png" platform="android" width="144" height="144" density="xxhdpi" />
-    <icon src="res/icon/android/icon-192-xxxhdpi.png" platform="android" width="192" height="192" density="xxxhdpi" />
+    <!-- ANDROID -->
 
-    <!-- ANDROID SPLASH -->
-    <icon src="res/icon/android/icon-36-ldpi.png" platform="android" width="36" height="36" density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png" platform="android" width="48" height="48" density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png" platform="android" width="72" height="72" density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png" platform="android" width="96" height="96" density="xhdpi" />
-    <icon src="res/icon/android/icon-144-xxhdpi.png" platform="android" width="144" height="144" density="xxhdpi" />
-    <icon src="res/icon/android/icon-192-xxxhdpi.png" platform="android" width="192" height="192" density="xxxhdpi" />
+    <platform name="android">
+        <icon src="res/icon/android/icon-36-ldpi.png" width="36" height="36" density="ldpi" />
+        <icon src="res/icon/android/icon-48-mdpi.png" width="48" height="48" density="mdpi" />
+        <icon src="res/icon/android/icon-72-hdpi.png" width="72" height="72" density="hdpi" />
+        <icon src="res/icon/android/icon-96-xhdpi.png" width="96" height="96" density="xhdpi" />
+        <icon src="res/icon/android/icon-144-xxhdpi.png" width="144" height="144" density="xxhdpi" />
+        <icon src="res/icon/android/icon-192-xxxhdpi.png" width="192" height="192" density="xxxhdpi" />
 
-    <!-- IOS ICONS -->
-    <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
-    <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
-    <icon gap:platform="ios" height="114" src="res/icon/ios/icon-57-2x.png" width="114" />
-    <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
-
-    <!-- IPHONE SPLASH -->
-    <gap:splash gap:platform="ios" height="480" src="res/screen/ios/screen-iphone-portrait.png" width="320" />
-    <gap:splash gap:platform="ios" height="960" src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
-    <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
-
-    <!-- IPAD SPLASH -->
-    <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
-    <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
+        <splash src="res/screen/android/screen-ldpi-portrait.png" density="port-ldpi"/>
+        <splash src="res/screen/android/screen-mdpi-portrait.png" density="port-mdpi"/>
+        <splash src="res/screen/android/screen-hdpi-portrait.png" density="port-hdpi"/>
+        <splash src="res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
+    </platform>
 
     <!-- WHITELIST POLICY -->
     <plugin name="cordova-plugin-whitelist" spec="1" />
