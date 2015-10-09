@@ -33,9 +33,8 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-targetSdkVersion" value="22" />
+    <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="1000" />
-    <preference name="SplashScreen" value="screen" />
-    <preference name="phonegap-version" value="cli-5.1.1" />
 
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.network-information" />
@@ -63,18 +62,18 @@
     <icon src="icon.png" />
 
     <!-- ANDROID ICONS -->
-    <icon gap:platform="android" gap:qualifier="ldpi" width="36" height="36" src="res/icon/android/icon-36-ldpi.png" density="ldpi" />
-    <icon gap:platform="android" gap:qualifier="mdpi" width="48" height="48" src="res/icon/android/icon-48-mdpi.png" density="mdpi" />
-    <icon gap:platform="android" gap:qualifier="hdpi" width="72" height="72" src="res/icon/android/icon-72-hdpi.png" density="hdpi" />
-    <icon gap:platform="android" gap:qualifier="xhdpi" width="96" height="96" src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
-    <icon gap:platform="android" gap:qualifier="xxhdpi" width="144" height="144" src="res/icon/android/icon-144-xhdpi.png" density="xhdpi" />
-    <icon gap:platform="android" gap:qualifier="xxxhdpi" width="192" height="192" src="res/icon/android/icon-192-xhdpi.png" density="xhdpi" />
+    <icon src="res/icon/android/icon-36-ldpi.png" platform="android" width="36" height="36" density="ldpi" />
+    <icon src="res/icon/android/icon-48-mdpi.png" platform="android" width="48" height="48" density="mdpi" />
+    <icon src="res/icon/android/icon-72-hdpi.png" platform="android" width="72" height="72" density="hdpi" />
+    <icon src="res/icon/android/icon-96-xhdpi.png" platform="android" width="96" height="96" density="xhdpi" />
+    <icon src="res/icon/android/icon-144-xxhdpi.png" platform="android" width="144" height="144" density="xxhdpi" />
+    <icon src="res/icon/android/icon-192-xxxhdpi.png" platform="android" width="192" height="192" density="xxxhdpi" />
 
     <!-- ANDROID SPLASH -->
-    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" density="ldpi" />
-    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" density="mdpi" />
-    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" density="hdpi" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" density="xhdpi" />
+    <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi" />
+    <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi" />
+    <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi" />
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi" />
 
     <!-- IOS ICONS -->
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
