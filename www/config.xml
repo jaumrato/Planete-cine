@@ -40,7 +40,6 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.whitelist" />
 
     <!--
     <gap:plugin name="org.apache.cordova.battery-status" />
@@ -92,7 +91,7 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
 
     <!-- WHITELIST POLICY -->
-    <plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="cordova-plugin-whitelist"/>
 
     <access origin="http://*" />
     <access origin="https://*" />
