@@ -35,6 +35,7 @@
     <preference name="android-targetSdkVersion" value="22" />
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="SplashScreen" value="screen" />
+    <preference name="phonegap-version" value="cli-5.1.1" />
 
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.network-information" />
