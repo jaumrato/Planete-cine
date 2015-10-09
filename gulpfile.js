@@ -13,7 +13,7 @@ gulp.task( 'less', function() {
         "compatibility": "*",
         "keepBreaks": false,
         "mediaMerging": true
-    } ) ).pipe( gulp.dest( './output' ) );
+    } ) ).pipe( gulp.dest( './www' ) );
 } );
 
 
@@ -63,7 +63,7 @@ gulp.task( 'js', function() {
             "comments": false,
             "semicolons": true
         }
-    } ) ).pipe( gulp_concat( 'main.js' ) ).pipe( gulp.dest( './output' ) );
+    } ) ).pipe( gulp_concat( 'main.js' ) ).pipe( gulp.dest( './www' ) );
 } );
 
 

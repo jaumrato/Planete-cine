@@ -1,4 +1,4 @@
-app.directive( 'videoPlayer', function( MovieDetails, Model ) {
+app.directive( 'videoPlayer', function( Model ) {
     return {
         restrict: 'E',
         replace: true,

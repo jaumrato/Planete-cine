@@ -12,26 +12,26 @@ app.config( function( $routeProvider ) {
         templateUrl: 'templates/movies.html',
         controller: 'moviesCtrl',
         resolve: {
-            haveToRefresh: function( Service ) {
+            haveToRefresh: function( Model ) {
                 // Refresh movies list if the previous state isn't the movie details page
-                return Service.model.previousLocation.indexOf( '/movieDetails/' ) === -1;
+                return Model.previousLocation.indexOf( '/movieDetails/' ) === -1;
             }
         }
     } ).when( '/showtimes/:theaterCode', {
         templateUrl: 'templates/showtimes.html',
         controller: 'showtimesCtrl',
         resolve: {
-            haveToRefresh: function( Service ) {
+            haveToRefresh: function( Model ) {
                 // Refresh showtimes list if the previous state isn't the movie details page
-                return Service.model.previousLocation.indexOf( '/movieDetails/' ) === -1;
+                return Model.previousLocation.indexOf( '/movieDetails/' ) === -1;
             },
-            back: function( Service ) {
-                if ( Service.model.previousLocation.indexOf( '/movieDetails/' ) > -1 ) {
+            back: function( Model ) {
+                if ( Model.previousLocation.indexOf( '/movieDetails/' ) > -1 ) {
                     // If user come from a movie details go back to the home
                     return '#/';
                 } else {
                     // Else come back to the previous state
-                    return Service.model.previousLocation;
+                    return Model.previousLocation;
                 }
             }
         }
@@ -42,17 +42,17 @@ app.config( function( $routeProvider ) {
         templateUrl: 'templates/movieDetails.html',
         controller: 'movieDetailsCtrl',
         resolve: {
-            displayShowtimesButtons: function( Service ) {
+            displayShowtimesButtons: function( Model ) {
                 // Display showtimes buttons if the previous state isn't a theaters showtimes page
-                return Service.model.previousLocation.indexOf( '/showtimes/' ) === -1;
+                return Model.previousLocation.indexOf( '/showtimes/' ) === -1;
             },
-            back: function( Service ) {
-                if ( Service.model.previousLocation.indexOf( '/showtimesByTheater/' ) > -1 ) {
+            back: function( Model ) {
+                if ( Model.previousLocation.indexOf( '/showtimesByTheater/' ) > -1 ) {
                     // If user come from a showtimes by theaters
                     return '#/movies';
                 } else {
                     // Else come back to the previous state
-                    return Service.model.previousLocation;
+                    return Model.previousLocation;
                 }
             }
         }
@@ -63,29 +63,27 @@ app.config( function( $routeProvider ) {
 } );
 
 getConnection = function() {
-    var connection;
-    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) connection = false;
-    else connection = true;
-    return connection;
+    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) return false;
+    else return true;
 };
 
-document.addEventListener( 'deviceready', function() {
-    var checkConnection = function() {
-        var connection = getConnection();
-        if ( connection ) {
-            angular.bootstrap( document.body, [ 'Application' ] );
-        } else {
-            var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
-                title = "Connexion internet",
-                buttonLabels = [ "Réessayer", "Annuler" ];
-            navigator.notification.confirm( message, function( index ) {
-                checkConnection();
-            }, title, buttonLabels );
-        }
-    };
-    checkConnection();
-}, false );
-
-// window.addEventListener( "load", function() {
-//     angular.bootstrap( document.body, [ "Application" ] )
+// document.addEventListener( 'deviceready', function() {
+//     var checkConnection = function() {
+//         var connection = getConnection();
+//         if ( connection ) {
+//             angular.bootstrap( document.body, [ 'Application' ] );
+//         } else {
+//             var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
+//                 title = "Connexion internet",
+//                 buttonLabels = [ "Réessayer", "Annuler" ];
+//             navigator.notification.confirm( message, function( index ) {
+//                 checkConnection();
+//             }, title, buttonLabels );
+//         }
+//     };
+//     checkConnection();
 // }, false );
+
+window.addEventListener( "load", function() {
+    angular.bootstrap( document.body, [ "Application" ] )
+}, false );

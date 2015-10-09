@@ -1,0 +1,28 @@
+<div class="top-bar">
+    <a ng-href="{{back}}" class="back"></a>
+    <div class="title-container">
+        {{model.currentTheater.name}}
+    </div>
+    <div class="favorite-star" ng-click="toggleFavorite()">
+        {{isFavorite ? '★' : '☆'}}
+    </div>
+</div>
+
+<div class="days-bar">
+    <select ng-options="day as day | formatDay for day in model.showtimesDays" ng-model="model.currentDay"></select>
+</div>
+
+<div class="showtimes main-container movies-list">
+    <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}">
+        <div class="details" style="background-image: url('{{movie.thumbnail}}');">
+            <div class="title">{{title}}</div>
+            <div class="runtime">{{movie.runtime | formatRuntime}}</div>
+            <div class="clear"></div>
+            <div class="showtimes-list">
+                <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
+                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

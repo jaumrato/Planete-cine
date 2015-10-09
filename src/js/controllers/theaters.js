@@ -28,8 +28,10 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters ) {
     };
 
     $scope.onKeyPress = function( e ) {
-        alert( Theaters.serach );
-        if ( e.charCode === 13 ) Theaters.search( 'text', Model.searchTheaterText );
+        if ( e.charCode === 13 ) {
+            console.log( Theaters );
+            Theaters.search( 'text', Model.searchTheaterText );
+        }
     };
 
 } );
