@@ -67,23 +67,23 @@ getConnection = function() {
     else return true;
 };
 
-// document.addEventListener( 'deviceready', function() {
-//     var checkConnection = function() {
-//         var connection = getConnection();
-//         if ( connection ) {
-//             angular.bootstrap( document.body, [ 'Application' ] );
-//         } else {
-//             var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
-//                 title = "Connexion internet",
-//                 buttonLabels = [ "Réessayer", "Annuler" ];
-//             navigator.notification.confirm( message, function( index ) {
-//                 checkConnection();
-//             }, title, buttonLabels );
-//         }
-//     };
-//     checkConnection();
-// }, false );
-
-window.addEventListener( "load", function() {
-    angular.bootstrap( document.body, [ "Application" ] )
+document.addEventListener( 'deviceready', function() {
+    var checkConnection = function() {
+        var connection = getConnection();
+        if ( connection ) {
+            angular.bootstrap( document.body, [ 'Application' ] );
+        } else {
+            var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
+                title = "Connexion internet",
+                buttonLabels = [ "Réessayer", "Annuler" ];
+            navigator.notification.confirm( message, function( index ) {
+                checkConnection();
+            }, title, buttonLabels );
+        }
+    };
+    checkConnection();
 }, false );
+
+// window.addEventListener( "load", function() {
+//     angular.bootstrap( document.body, [ "Application" ] )
+// }, false );
