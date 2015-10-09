@@ -93,15 +93,7 @@
     <!-- WHITELIST POLICY -->
     <plugin name="cordova-plugin-whitelist"/>
 
-    <access origin="http://*" />
-    <access origin="https://*" />
-
-    <access launch-external="yes" origin="tel:*" />
-    <access launch-external="yes" origin="geo:*" />
-    <access launch-external="yes" origin="mailto:*" />
-    <access launch-external="yes" origin="sms:*" />
-    <access launch-external="yes" origin="market:*" />
-
+    <access origin="*"/>
     <allow-intent href="*" />
 
 </widget>
