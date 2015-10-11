@@ -29,12 +29,10 @@
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />    
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-targetSdkVersion" value="22" />
-    <preference name="SplashScreen" value="splash" />
-    <preference name="SplashScreenDelay" value="1000" />
 
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.network-information" />
@@ -63,23 +61,34 @@
 
     <!-- ANDROID -->
 
-    <icon src="res/icon/android/icon-36-ldpi.png" platform="android" width="36" height="36" density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png" platform="android" width="48" height="48" density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png" platform="android" width="72" height="72" density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png" platform="android" width="96" height="96" density="xhdpi" />
-    <icon src="res/icon/android/icon-144-xxhdpi.png" platform="android" width="144" height="144" density="xxhdpi" />
-    <icon src="res/icon/android/icon-192-xxxhdpi.png" platform="android" width="192" height="192" density="xxxhdpi" />
+    <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" width="36" height="36" gap:qualifier="ldpi" />
+    <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" width="48" height="48" gap:qualifier="mdpi" />
+    <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" width="72" height="72" gap:qualifier="hdpi" />
+    <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" width="96" height="96" gap:qualifier="xhdpi" />
+    <icon src="res/icon/android/icon-144-xxhdpi.png" gap:platform="android" width="144" height="144" gap:qualifier="xxhdpi" />
+    <icon src="res/icon/android/icon-192-xxxhdpi.png" gap:platform="android" width="192" height="192" gap:qualifier="xxxhdpi" />
 
-    <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi" />
-    <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi" />
-    <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi" />
-    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+    <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
+    <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
+    <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi"/>
+    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xxxhdpi"/>
 
-    <!-- WHITELIST POLICY -->
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-
-    <access origin="*" />
-    <allow-navigation href="*" />
-    <allow-intent href="*" />
+    <access origin="*"/>
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
 
 </widget>
