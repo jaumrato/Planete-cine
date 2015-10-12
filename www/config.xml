@@ -40,6 +40,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 
     <!--
     <gap:plugin name="org.apache.cordova.battery-status" />
@@ -77,11 +78,9 @@
         <splash src="res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
     </platform>
 
-    <!-- WHITELIST POLICY -->
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-
     <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
     <allow-navigation href="*" />
-    <allow-intent href="*" />
 
 </widget>
