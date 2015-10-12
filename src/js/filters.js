@@ -1,6 +1,5 @@
 app.filter( 'formatDay', function() {
     return function( input ) {
-        // return moment( input, 'YYYY-MM-DD' ).format( 'ddd DD MMM' );
         return moment( input, 'YYYY-MM-DD' ).format( 'dddd DD MMMM' );
     };
 } ).filter( 'formatRuntime', function() {
@@ -32,7 +31,8 @@ app.filter( 'formatDay', function() {
     };
 } ).filter( 'formatDistance', function() {
     return function( input ) {
-        if ( input < 1 ) return input * 1000 + ' m';
+        if ( !input ) return "Distance inconnue";
+        else if ( input < 1 ) return input * 1000 + ' m';
         else return input.toFixed( 2 ) + ' km';
     };
 } );

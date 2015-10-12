@@ -42,44 +42,44 @@
 
 }
 
-.empty-theaters-list{
+.empty-list{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 140px;
+    overflow: auto;
+
+    .vertical-center{
         position: absolute;
         top: 0;
         right: 0;
         left: 0;
-        bottom: 140px;
-        overflow: auto;
+        bottom: 0;
+        width: 80%;
+        height: 140px;
+        margin: auto;
+        text-align: center;
 
-        .vertical-center{
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            width: 80%;
-            height: 140px;
-            margin: auto;
-            text-align: center;
+        .title{
+            font-family: 'robotobold';
+            color: @darkBlue;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
 
-            .title{
-                font-family: 'robotobold';
-                color: @darkBlue;
-                font-size: 18px;
-                margin: 0 0 10px 0;
-            }
+        .message{
+            color: @darkGrey;
+            font-size: 14px;
+            line-height: 22px;
+        }
 
-            .message{
-                color: @darkGrey;
-                font-size: 14px;
-                line-height: 22px;
-            }
-
-            .favorite-star{
-                color: @darkBlue;
-                font-size: 14px;
-                font-weight: bold;
-            }
-
+        .favorite-star{
+            color: @darkBlue;
+            font-size: 14px;
+            font-weight: bold;
         }
 
     }
+
+}

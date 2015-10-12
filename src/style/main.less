@@ -65,16 +65,6 @@ input{
     outline: none;
 }
 
-// .top-bar{
-//     padding: 0 20px;
-//     height: 50px;
-//     background: @turquoise;
-//     color: #FFF;
-//     line-height: 50px;
-//     font-size: 18px;
-//     text-align: center;
-// }
-
 .main-container{
     position: absolute;
     top: 0;
@@ -94,7 +84,8 @@ input{
     background: @turquoise;
     z-index: 10;
 
-    .back{
+    .back,
+    .geolocation-icon{
         position: absolute;
         top: 0;
         left: 0;
@@ -108,11 +99,19 @@ input{
         border-right: 1px solid lighten( @turquoise, 20% );
     }
 
+    .geolocation-icon{
+        background-image: url('assets/geolocation.svg');
+        border-left: 1px solid lighten( @turquoise, 20% );
+        background-size: 30px;
+        left: initial;
+        right: 0;
+    }
+
     .input-container{
         position: absolute;
         top: 0;
         left: 50px;
-        right: 0;
+        right: 50px;
         bottom: 0;
 
         input{
@@ -151,6 +150,10 @@ input{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        &.middle{
+            right: 50px;
+        }
     }
 
     .favorite-star{

@@ -3,7 +3,7 @@
     <div class="title-container">{{model.movieDetails.title}}</div>
 </div>
 
-<div class="days-bar">
+<div class="days-bar" ng-if="model.showtimesDays.length > 0">
     <select ng-options="day as day | formatDay for day in model.showtimesDays" ng-model="model.currentDay"></select>
 </div>
 
@@ -30,14 +30,14 @@
         </div>
     </div>
 
-    <div ng-if="model.showtimesDays.length === 0" class="empty-theaters-list">
+    <div ng-if="model.showtimesDays.length === 0" class="empty-list">
         <div class="vertical-center">
-            <div class="title">Aucun cinéma trouvé</div>
+            <div class="title">Aucun résultat trouvé</div>
             <div class="message" ng-if="searchMode === 'gps'">
-                Nous n'avons trouvé aucun cinéma proche de vous diffusant ce film.
+                Aucun cinéma proche de vous ne semble diffuser ce film.
             </div>
             <div class="message" ng-if="searchMode === 'favorites'">
-                Nous n'avons trouvé aucun de vos cinémas favoris diffusant ce film.
+                Aucun de vos cinémas favoris ne semble diffuser ce film.
             </div>
         </div>
     </div>

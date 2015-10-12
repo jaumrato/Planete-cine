@@ -1,4 +1,4 @@
-app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model, ShowtimesByTheater ) {
+app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model, ShowtimesByTheater, $location ) {
 
     $scope.model = Model;
 
@@ -17,22 +17,38 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model,
     };
 
     $scope.onSuccessGeolocation = function( position ) {
-        ShowtimesByTheater.getShowtimeList( $routeParams.movieCode, $routeParams.searchMode, position.coords );
+        $scope.search( $routeParams.movieCode, $routeParams.searchMode, position.coords );
     };
 
     $scope.onErrorGeolocation = function() {
-        navigator.notification.confirm( "La recherche géolocalisée nécessite l'activation du GPS.",
-            function( index ) {
-                if ( index === 1 ) $scope.geolocationSearch();
-            },
-            "Activation du GPS", [ "Réessayer", "Annuler" ]
-        );
+        $scope.notifier.show( {
+            title: 'Activation du GPS',
+            message: "La recherche géolocalisée nécessite l'activation du GPS.",
+            close: $location.path.bind( $location, Model.previousLocation ),
+            retry: $scope.geolocationSearch
+        } );
     };
+
+    $scope.search = function( code, mode, position ) {
+        $scope.loader.show( 'Chargement des séances' );
+        ShowtimesByTheater.getShowtimeList( code, mode, position ).then(
+            ShowtimesByTheater.handleShowtimesList.bind( ShowtimesByTheater ),
+            function() {
+                $scope.notifier.show( {
+                    title: 'Une erreur est survenue',
+                    message: 'Impossible de récupérer la liste des séances correspondant à ce film.',
+                    retry: $scope.search.bind( $scope, code, mode, position )
+                } );
+            }
+        ).finally( function() {
+            $scope.loader.hide();
+        } );
+    }
 
     if ( $routeParams.searchMode === 'gps' ) {
         $scope.geolocationSearch();
     } else if ( $routeParams.searchMode === 'favorites' ) {
-        ShowtimesByTheater.getShowtimeList( $routeParams.movieCode, $routeParams.searchMode, {} );
+        $scope.search( $routeParams.movieCode, $routeParams.searchMode, {} );
     }
 
 } );

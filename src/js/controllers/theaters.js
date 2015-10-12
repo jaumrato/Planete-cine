@@ -19,12 +19,11 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Service ) {
     };
 
     $scope.onErrorGeolocation = function() {
-        navigator.notification.confirm( "La recherche géolocalisée nécessite l'activation du GPS.",
-            function( index ) {
-                if ( index === 1 ) $scope.geolocationSearch();
-            },
-            "Activation du GPS", [ "Réessayer", "Annuler" ]
-        );
+        $scope.notifier.show( {
+            title: 'Activation du GPS',
+            message: "La recherche géolocalisée nécessite l'activation du GPS.",
+            retry: $scope.geolocationSearch
+        } );
     };
 
     $scope.onKeyPress = function( e ) {

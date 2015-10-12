@@ -3,7 +3,7 @@ app.factory( 'MovieDetails', function( $http, Model, Service ) {
     return {
 
         getMovieDetails: function( code ) {
-            return $http.get( Model.BASE_URL + '/moie', Service.getParams( {
+            return $http.get( Model.BASE_URL + '/movie', Service.getParams( {
                 mediafmt: 'mp4-lc',
                 profile: 'medium',
                 code: code,

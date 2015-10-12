@@ -3,8 +3,6 @@ app.factory( 'ShowtimesByTheater', function( $http, Model, Service ) {
     return {
 
         getShowtimeList: function( movieCode, mode, position ) {
-            Service.showLoader( 'Chargement des séances' );
-
             var params = {
                 favorites: {
                     count: 30,
@@ -22,24 +20,16 @@ app.factory( 'ShowtimesByTheater', function( $http, Model, Service ) {
                 }
             };
 
-            $http.get(
+            return $http.get(
                 Model.BASE_URL + '/showtimelist',
                 Service.getParams( params[ mode ] )
-            ).then(
-                function( resp ) {
-                    this.handleShowtimesList( resp.data.feed.theaterShowtimes );
-                    Service.hideLoader();
-                }.bind( this ),
-                function() {
-                    Service.hideLoader();
-                }
             );
         },
 
-        handleShowtimesList: function( theaters ) {
+        handleShowtimesList: function( resp ) {
             var out = {};
             Model.showtimesDays = [];
-            theaters.forEach( function( item ) {
+            resp.data.feed.theaterShowtimes.forEach( function( item ) {
                 item.movieShowtimes = item.movieShowtimes ||  [];
                 item.movieShowtimes.forEach( function( movie ) {
                     movie.scr.forEach( function( day ) {

@@ -24,7 +24,7 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
         Showtimes.getShowtimeList( $routeParams.theaterCode ).then(
             function( resp ) {
                 $scope.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
-                Showtimes.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes );
+                Showtimes.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes || [] );
             },
             function( err ) {
                 $scope.notifier.show( {

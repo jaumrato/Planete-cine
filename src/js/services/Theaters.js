@@ -12,7 +12,7 @@ app.factory( 'Theaters', function( $http, Model, Service ) {
                     radius: 30,
                     count: 50,
                     lat: search.latitude,
-                    lon: search.longitude
+                    long: search.longitude
                 }
             };
 
