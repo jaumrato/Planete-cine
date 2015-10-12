@@ -34,7 +34,7 @@ app.factory( 'Showtimes', function( $http, Model, Service ) {
                             showtimes: {},
                             title: movie.onShow.movie.title,
                             code: movie.onShow.movie.code,
-                            thumbnail: movie.onShow.movie.poster.href.replace( '/pictures', '/r_60_x/pictures' ),
+                            thumbnail: movie.onShow.movie.poster.href.replace( '/pictures', '/r_120_x/pictures' ),
                             runtime: movie.onShow.movie.runtime
                         };
                     }
