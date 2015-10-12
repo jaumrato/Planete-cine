@@ -3,26 +3,23 @@ app.factory( 'MovieDetails', function( $http, Model, Service ) {
     return {
 
         getMovieDetails: function( code ) {
-            Service.showLoader( 'Chargement des informations' );
-
-            return $http.get( Model.baseURL + '/movie', Service.getParams( {
+            return $http.get( Model.BASE_URL + '/moie', Service.getParams( {
                 mediafmt: 'mp4-lc',
                 profile: 'medium',
                 code: code,
                 striptags: 'synopsis,synopsisshort'
-            } ) ).then(
-                function( resp ) {
-                    Service.hideLoader();
-                    Model.movieDetails = resp.data.movie;
-                },
-                function() {
-                    Service.hideLoader();
-                }
-            );
+            } ) );
+        },
+
+        handleMovieDetails: function( resp ) {
+            Model.movieDetails = resp.data.movie;
+            if ( Model.movieDetails.trailer && Model.movieDetails.trailer.code ) {
+                this.getTrailer( Model.movieDetails.trailer.code );
+            }
         },
 
         getTrailer: function( code ) {
-            return $http.get( Model.baseURL + '/media', Service.getParams( {
+            $http.get( Model.BASE_URL + '/media', Service.getParams( {
                 mediafmt: 'mp4-lc',
                 profile: 'medium',
                 code: code
@@ -32,7 +29,7 @@ app.factory( 'MovieDetails', function( $http, Model, Service ) {
                 } catch ( err ) {
                     Model.movieDetails.trailer.url = undefined;
                 }
-            }.bind( this ) );
+            } );
         }
 
     };

@@ -2,7 +2,9 @@ app.factory( 'Model', function() {
 
     return {
 
-        baseURL: 'http://api.allocine.fr/rest/v3',
+        BASE_URL: 'http://api.allocine.fr/rest/v3',
+
+        API_KEY: null,
 
         moviesShowtimesForATheater: null,
 

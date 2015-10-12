@@ -62,28 +62,19 @@ app.config( function( $routeProvider ) {
 
 } );
 
-getConnection = function() {
-    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) return false;
-    else return true;
-};
-
 document.addEventListener( 'deviceready', function() {
-    var checkConnection = function() {
-        var connection = getConnection();
-        if ( connection ) {
-            angular.bootstrap( document.body, [ 'Application' ] );
-        } else {
-            var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
-                title = "Connexion internet",
-                buttonLabels = [ "Réessayer", "Annuler" ];
-            navigator.notification.confirm( message, function( index ) {
-                checkConnection();
-            }, title, buttonLabels );
-        }
-    };
-    checkConnection();
+    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) {
+        var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
+            title = "Connexion internet",
+            buttonLabels = [ "Réessayer", "Annuler" ];
+        navigator.notification.confirm( message, function( index ) {
+            checkConnection();
+        }, title, buttonLabels );
+    } else {
+        angular.bootstrap( document.body, [ 'Application' ] );
+    }
 }, false );
 
-// window.addEventListener( "load", function() {
-//     angular.bootstrap( document.body, [ "Application" ] )
-// }, false );
+window.addEventListener( "load", function() {
+    angular.bootstrap( document.body, [ "Application" ] )
+}, false );

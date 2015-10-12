@@ -3,20 +3,10 @@ app.factory( 'Showtimes', function( $http, Model, Service ) {
     return {
 
         getShowtimeList: function( code ) {
-            Service.showLoader( 'Chargement des séances' );
-            $http.get( Model.baseURL + '/showtimelist', Service.getParams( {
+            return $http.get( Model.BASE_URL + '/showtimelist', Service.getParams( {
                 profile: 'medium',
                 theaters: code
-            } ) ).then(
-                function( resp ) {
-                    Model.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
-                    this.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes );
-                    Service.hideLoader();
-                }.bind( this ),
-                function() {
-                    Service.hideLoader();
-                }
-            );
+            } ) );
         },
 
         handleShowtimesList: function( movies ) {

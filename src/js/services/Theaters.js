@@ -3,31 +3,27 @@ app.factory( 'Theaters', function( $http, Model, Service ) {
     return {
 
         search: function( mode, search ) {
-            Service.showLoader( 'Chargement des cinémas' );
-
             var params = {
                 text: {
-                    location: search
+                    location: search,
+                    count: 50
                 },
                 gps: {
                     radius: 30,
+                    count: 50,
                     lat: search.latitude,
                     lon: search.longitude
                 }
             };
 
-            $http.get(
-                Model.baseURL + '/theaterlist',
+            return $http.get(
+                Model.BASE_URL + '/theaterlist',
                 Service.getParams( params[ mode ] )
-            ).then(
-                function( resp ) {
-                    Model.theaters = resp.data.feed.theater;
-                    Service.hideLoader();
-                },
-                function() {
-                    Service.hideLoader();
-                }
             );
+        },
+
+        handleTheatersList: function( theaters ) {
+            Model.theaters = theaters;
         }
 
     };

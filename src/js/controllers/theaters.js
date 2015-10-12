@@ -1,4 +1,4 @@
-app.controller( 'theatersCtrl', function( $scope, Model, Theaters ) {
+app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Service ) {
 
     $scope.model = Model;
 
@@ -15,7 +15,7 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters ) {
     };
 
     $scope.onSuccessGeolocation = function( position ) {
-        Theaters.search( 'gps', position.coords );
+        $scope.search( 'gps', position.coords );
     };
 
     $scope.onErrorGeolocation = function() {
@@ -29,9 +29,26 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters ) {
 
     $scope.onKeyPress = function( e ) {
         if ( e.charCode === 13 ) {
-            console.log( Theaters );
-            Theaters.search( 'text', Model.searchTheaterText );
+            $scope.search( 'text', Model.searchTheaterText );
         }
+    };
+
+    $scope.search = function( mode, search ) {
+        $scope.loader.show( 'Chargement des cinémas' );
+        Theaters.search( mode, search ).then(
+            function( resp ) {
+                Theaters.handleTheatersList( resp.data.feed.theater );
+            },
+            function( err ) {
+                $scope.notifier.show( {
+                    title: 'Une erreur est survenue',
+                    message: 'Impossible de récupérer la liste des cinémas correspondant à votre recherche.',
+                    retry: $scope.search.bind( $scope, mode, search )
+                } );
+            }
+        ).finally( function() {
+            $scope.loader.hide();
+        } );
     };
 
 } );

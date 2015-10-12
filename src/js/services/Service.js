@@ -1,28 +1,27 @@
 app.service( 'Service', function( $http, Model ) {
 
-    this.baseURL = 'http://api.allocine.fr/rest/v3';
-
     this.saveUserSettings = function() {
-        localStorage.userSettings = angular.toJson( this.model.userSettings );
-    };
-
-    this.showLoader = function( message ) {
-        this.model.loader.message = message;
-        this.model.loader.status = true;
-    };
-
-    this.hideLoader = function() {
-        this.model.loader.message = '';
-        this.model.loader.status = false;
+        localStorage.userSettings = angular.toJson( Model.userSettings );
     };
 
     this.getParams = function( o ) {
         return {
             params: angular.extend( {
-                partner: 'YW5kcm9pZC12M3M',
+                partner: Model.API_KEY,
                 format: 'json'
             }, o )
         }
+    };
+
+    this.getApiKey = function() {
+        $http.get( 'https://dl.dropboxusercontent.com/u/54254237/key.json' ).then(
+            function( resp ) {
+                Model.API_KEY = resp.data.key;
+            },
+            function( err ) {
+                // handle error;
+            }
+        );
     };
 
     this.getShowtimeVersion = function( movie ) {
@@ -31,6 +30,6 @@ app.service( 'Service', function( $http, Model ) {
         return version;
     };
 
-    this.model = Model;
+    this.getApiKey();
 
 } );

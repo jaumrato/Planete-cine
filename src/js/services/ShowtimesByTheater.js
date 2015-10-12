@@ -23,7 +23,7 @@ app.factory( 'ShowtimesByTheater', function( $http, Model, Service ) {
             };
 
             $http.get(
-                Model.baseURL + '/showtimelist',
+                Model.BASE_URL + '/showtimelist',
                 Service.getParams( params[ mode ] )
             ).then(
                 function( resp ) {
