@@ -9,9 +9,10 @@ app.directive( 'videoPlayer', function( Model ) {
             source.src = Model.movieDetails.trailer.url;
             source.type = 'video/mp4';
             video.appendChild( source );
-            video.addEventListener( "canplay", function() {
-                video.style.display = 'inline';
-            } );
+            if ( Model.movieDetails.trailer.thumbnail ) {
+                video.poster = Model.movieDetails.trailer.thumbnail.replace( '/videothumbnails', '/r_720_x/videothumbnails' );
+            }
+            video.style.display = 'inline';
         }
     };
 } );

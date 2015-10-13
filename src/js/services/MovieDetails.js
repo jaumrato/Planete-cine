@@ -26,6 +26,9 @@ app.factory( 'MovieDetails', function( $http, Model, Service ) {
             } ) ).then( function( resp ) {
                 try {
                     Model.movieDetails.trailer.url = resp.data.media.rendition[ 0 ].href;
+                    if ( resp.data.media.thumbnail && resp.data.media.thumbnail.href ) {
+                        Model.movieDetails.trailer.thumbnail = resp.data.media.thumbnail.href;
+                    }
                 } catch ( err ) {
                     Model.movieDetails.trailer.url = undefined;
                 }

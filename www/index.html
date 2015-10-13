@@ -9,27 +9,8 @@
     </head>
     <body ng-controller="mainCtrl">
         <ng-view></ng-view>
-
-        <div class="notifier" ng-if="notifier.isVisible">
-            <div class="dialog">
-                <icon>×</icon>
-                <div class="title">{{notifier.title}}</div>
-                <p class="message">{{notifier.message}}</p>
-                <button class="buttons retry" ng-click="notifier.onRetry()">Réessayer</button>
-                <button class="buttons close" ng-click="notifier.onClose()">Fermer</button>
-            </div>
-        </div>
-
-        <div class="loader" ng-if="loader.isVisible">
-            <div class="vertical-center">
-                <div class="spinner">
-                    <div class="dot1"></div>
-                    <div class="dot2"></div>
-                </div>
-                <div class="message">{{loader.message}}</div>
-            </div>
-        </div>
-
+        <loader></loader>
+        <notifier></notifier>
         <script src="cordova.js"></script>
         <script src="libs/angular.min.js"></script>
         <script src="libs/angular-route.min.js"></script>

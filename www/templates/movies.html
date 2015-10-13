@@ -8,7 +8,7 @@
 <div class="main-container movies">
     <div class="movies-list">
         <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:filter">
-            <div class="details" style="background-image: url('{{movie.poster.href}}');">
+            <div class="details" style="background-image: url('{{movie.poster.href | resizePoster:150}}');">
                 <div class="title">{{movie.title}}</div>
                 <div class="genres">{{movie.genre | formatGenres}}</div>
                 <div class="runtime">{{movie.runtime | formatRuntime}}</div>

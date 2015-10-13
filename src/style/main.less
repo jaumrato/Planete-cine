@@ -24,10 +24,10 @@
 }
 
 @red: #E74C3C;
-@darkBlue: #28323C;
-@turquoise: #48C9B0;
-@darkGrey: #777777;
-@lightGrey: #DDDDDD;
+@darkBlue: #2c3e50;
+@turquoise: #3498db;
+@darkGrey: #7f8c8d;
+@lightGrey: #bdc3c7;
 @light: #F5F5F5;
 
 html,body{
@@ -181,7 +181,7 @@ input{
     right: 0;
     z-index: 10;
     background: #FFF;
-    border-bottom: 1px solid @lightGrey;
+    border-bottom: 1px solid @light;
 
     select{
         width: 100%;
@@ -202,51 +202,6 @@ input{
         font-size: 14px;
     }
 
-    .arrows{
-        width: 10px;
-        height: 10px;
-        padding: 5px;
-        border: 2px solid @turquoise;
-        color: @turquoise;
-        border-radius: 50%;
-        vertical-align: middle;
-        margin: 13px 0;
-
-        &.right{
-            float: right;
-        }
-
-        &.left{
-            float: left;
-        }
-
-    }
-
-}
-
-
-
-.search-block{
-    position: fixed;
-    top: 0;
-    height: 50px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-    background: #FFF;
-    padding: 0 20px;
-    border-bottom: 1px solid @lightGrey;
-    line-height: 47px;
-}
-
-.search-block input{
-    box-sizing: border-box;
-    border: 2px solid @lightGrey;
-    padding: 5px 10px 5px 40px;
-    line-height: 20px;
-    border-radius: 20px;
-    vertical-align: middle;
 }
 
 @import "home.less";

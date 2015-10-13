@@ -17,8 +17,18 @@ app.factory( 'Model', function() {
         previousLocation: '/#/',
 
         loader: {
-            status: false,
-            messsage: ''
+            isVisible: false,
+            message: "Chargement ..."
+        },
+
+        currentTheater: null,
+
+        notifier: {
+            isVisible: false,
+            title: "",
+            message: "",
+            onRetry: function() {},
+            onClose: function() {}
         },
 
         userSettings: JSON.parse( localStorage.userSettings || JSON.stringify( {

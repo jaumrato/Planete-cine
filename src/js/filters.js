@@ -35,4 +35,16 @@ app.filter( 'formatDay', function() {
         else if ( input < 1 ) return input * 1000 + ' m';
         else return input.toFixed( 2 ) + ' km';
     };
+} ).filter( 'resizePoster', function() {
+    return function( input, size ) {
+        if ( !input ) return '';
+        return input.replace( '/pictures', '/r_' + size + '_x/pictures' );
+    };
+} ).filter( 'resizeTheaters', function() {
+    return function( input, size ) {
+        if ( !input ) return '';
+        input = input.replace( '/pictures', '/r_' + size + '_x/pictures' );
+        input = input.replace( '/medias', '/r_' + size + '_x/medias' );
+        return input;
+    };
 } );

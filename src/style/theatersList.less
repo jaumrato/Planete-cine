@@ -1,15 +1,14 @@
 .theaters-list{
+    padding: 20px 20px 0 20px;
 
     .theater{
         display: block;
-        padding: 10px 20px;
+        padding: 10px;
+        margin: 0 0 20px 0;
         text-decoration: none;
-        color: black;
-        border-bottom: 1px solid #EEEEEE;
-
-        &:nth-child(even){
-            background: @light;
-        }
+        color: @darkBlue;
+        background: #FFF;
+        box-shadow: 0 3px 6px 0 rgba( 0, 0, 0, 0.20 );
 
         .thumbnail{
             width: 60px;
@@ -18,7 +17,9 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            border-radius: 50%
+            background-color: @light;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px 0 rgba( 0, 0, 0, 0.25 );
         }
 
         .details{

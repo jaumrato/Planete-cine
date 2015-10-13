@@ -1,7 +1,7 @@
 <div class="top-bar">
     <a ng-href="{{back}}" class="back"></a>
     <div class="title-container middle">
-        {{currentTheater.name}}
+        {{model.currentTheater.name}}
     </div>
     <div class="favorite-star" ng-click="toggleFavorite()">
         {{isFavorite ? '★' : '☆'}}
@@ -14,7 +14,7 @@
 
 <div class="showtimes main-container movies-list">
     <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}">
-        <div class="details" style="background-image: url('{{movie.thumbnail}}');">
+        <div class="details" style="background-image: url('{{movie.thumbnail | resizePoster:150}}');">
             <div class="title">{{title}}</div>
             <div class="runtime">{{movie.runtime | formatRuntime}}</div>
             <div class="clear"></div>

@@ -1,20 +1,20 @@
-app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh, Service, $location ) {
+app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh, $location, Loader, Notifier ) {
 
     $scope.model = Model;
 
     $scope.getMoviesList = function() {
-        $scope.loader.show( 'Chargement des films' );
+        Loader.show( 'Chargement des films' );
         Movies.getMoviesList().then( function( resp ) {
             Movies.handleMoviesList( resp.data.feed.movie );
         }, function( err ) {
-            $scope.notifier.show( {
+            Notifier.show( {
                 title: 'Une erreur est survenue',
                 message: 'Impossible de récupérer la liste des films actuellement en salle.',
                 close: $location.path.bind( $location, "/#/" ),
                 retry: $scope.getMoviesList
             } );
         } ).finally( function() {
-            $scope.loader.hide();
+            Loader.hide();
         } );
     };
 

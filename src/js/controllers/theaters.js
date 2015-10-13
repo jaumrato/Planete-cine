@@ -1,4 +1,4 @@
-app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Service ) {
+app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Loader, Notifier ) {
 
     $scope.model = Model;
 
@@ -19,7 +19,7 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Service ) {
     };
 
     $scope.onErrorGeolocation = function() {
-        $scope.notifier.show( {
+        Notifier.show( {
             title: 'Activation du GPS',
             message: "La recherche géolocalisée nécessite l'activation du GPS.",
             retry: $scope.geolocationSearch
@@ -33,20 +33,20 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Service ) {
     };
 
     $scope.search = function( mode, search ) {
-        $scope.loader.show( 'Chargement des cinémas' );
+        Loader.show( 'Chargement des cinémas' );
         Theaters.search( mode, search ).then(
             function( resp ) {
                 Theaters.handleTheatersList( resp.data.feed.theater );
             },
             function( err ) {
-                $scope.notifier.show( {
+                Notifier.show( {
                     title: 'Une erreur est survenue',
                     message: 'Impossible de récupérer la liste des cinémas correspondant à votre recherche.',
                     retry: $scope.search.bind( $scope, mode, search )
                 } );
             }
         ).finally( function() {
-            $scope.loader.hide();
+            Loader.hide();
         } );
     };
 

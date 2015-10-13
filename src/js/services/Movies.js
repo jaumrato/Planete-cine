@@ -13,7 +13,7 @@ app.factory( 'Movies', function( $http, Model, Service ) {
         handleMoviesList: function( movies ) {
             Model.nowShowingMovies = movies.map( function( movie ) {
                 if ( movie.poster && movie.poster.href ) {
-                    movie.poster.href = movie.poster.href.replace( '/pictures', '/r_120_x/pictures' );
+                    movie.poster.href = movie.poster.href;
                 }
                 return movie;
             } );

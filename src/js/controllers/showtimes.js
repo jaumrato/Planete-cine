@@ -1,4 +1,4 @@
-app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service, Showtimes, Model ) {
+app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service, Showtimes, Model, Loader, Notifier ) {
 
     $scope.model = Model;
 
@@ -10,24 +10,26 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
 
     $scope.toggleFavorite = function() {
         if ( $scope.isFavorite ) {
-            var index = Model.userSettings.favoriteTheaters.indexOf( $routeParams.theaterCode );
+            var index = Model.userSettings.favoriteTheaters.map( function( theater ) {
+                return theater.code;
+            } ).indexOf( $routeParams.theaterCode );
             Model.userSettings.favoriteTheaters.splice( index, 1 );
         } else {
-            Model.userSettings.favoriteTheaters.push( $scope.currentTheater );
+            Model.userSettings.favoriteTheaters.push( Model.currentTheater );
         }
         $scope.isFavorite = !$scope.isFavorite;
         Service.saveUserSettings();
     };
 
     $scope.getShowtimeList = function() {
-        $scope.loader.show( 'Chargement des séances' );
+        Loader.show( 'Chargement des séances' );
         Showtimes.getShowtimeList( $routeParams.theaterCode ).then(
             function( resp ) {
-                $scope.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
+                Model.currentTheater = resp.data.feed.theaterShowtimes[ 0 ].place.theater;
                 Showtimes.handleShowtimesList( resp.data.feed.theaterShowtimes[ 0 ].movieShowtimes || [] );
             },
             function( err ) {
-                $scope.notifier.show( {
+                Notifier.show( {
                     title: 'Une erreur est survenue',
                     message: 'Impossible de récupérer la liste des séances de ce cinéma.',
                     close: $location.path.bind( $location, "/#/" ),
@@ -35,7 +37,7 @@ app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, 
                 } );
             }
         ).finally( function() {
-            $scope.loader.hide();
+            Loader.hide();
         } );
     };
 
