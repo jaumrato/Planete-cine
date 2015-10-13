@@ -1,3 +1,3 @@
-app.controller( 'homeCtrl', function( $scope, Model, Service ) {
+app.controller( 'homeCtrl', function( $scope, Model ) {
     $scope.model = Model;
 } );

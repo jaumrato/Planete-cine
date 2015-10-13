@@ -1,4 +1,4 @@
-app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service, Showtimes, Model, Loader, Notifier ) {
+app.controller( 'showtimesCtrl', function( $scope, $routeParams, haveToRefresh, back, Service, Showtimes, Model, Loader, Notifier, $location ) {
 
     $scope.model = Model;
 

@@ -31,7 +31,7 @@
 
     <div class="title" ng-if="model.movieDetails.castMember.length > 0">Casting</div>
     <p ng-repeat="item in model.movieDetails.castMember | limitTo:7" class="person">
-        <span class="thumbnail" style="background-image: url('{{item.picture.href}}');"></span>
+        <span class="thumbnail" style="background-image: url('{{item.picture.href | resizePoster:120}}');"></span>
         <span class="name">{{item.person.name}}</span>
         <span ng-if="item.activity.$ !== 'Acteur' && item.activity.$ !== 'Actrice'">{{item.activity.$}}</span>
         <span ng-if="item.activity.$ === 'Acteur' || item.activity.$ === 'Actrice'">dans le rôle de {{item.role}}</span>

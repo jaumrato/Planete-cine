@@ -30,6 +30,4 @@ app.service( 'Service', function( $http, Model ) {
         return version;
     };
 
-    this.getApiKey();
-
 } );

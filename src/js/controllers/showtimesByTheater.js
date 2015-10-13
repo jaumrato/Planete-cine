@@ -24,7 +24,9 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model,
         Notifier.show( {
             title: 'Activation du GPS',
             message: "La recherche géolocalisée nécessite l'activation du GPS.",
-            close: $location.path.bind( $location, Model.previousLocation ),
+            close: function() {
+                $location.path( "movieDetails" );
+            },
             retry: $scope.geolocationSearch
         } );
     };
@@ -37,6 +39,9 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model,
                 Notifier.show( {
                     title: 'Une erreur est survenue',
                     message: 'Impossible de récupérer la liste des séances correspondant à ce film.',
+                    close: function() {
+                        $location.path( "movieDetails" );
+                    },
                     retry: $scope.search.bind( $scope, code, mode, position )
                 } );
             }

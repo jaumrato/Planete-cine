@@ -1,9 +1,11 @@
-app.controller( 'mainCtrl', function( $scope, Model ) {
+app.controller( 'mainCtrl', function( $scope, Model, Service ) {
 
     $scope.model = Model;
 
     $scope.$on( '$locationChangeStart', function( event, current, previous ) {
         Model.previousLocation = previous;
     } );
+
+    Service.getApiKey();
 
 } );
