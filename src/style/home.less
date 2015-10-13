@@ -6,40 +6,28 @@
         top: 0;
         right: 0;
         left: 0;
-        bottom: 140px;
+        bottom: 160px;
         overflow: auto;
     }
 
     .bottom-block{
         background: @turquoise;
-        height: 140px;
         text-align: center;
         position: absolute;
+        padding: 0 20px;
         bottom: 0;
         left: 0;
         right: 0;
+        height: 160px;
 
         .button{
-            text-decoration: none;
-            display: inline-block;
+            display: block;
             background: darken( @turquoise, 10% );
             border-radius: 3px;
-            color: #FFF;
             font-size: 18px;
-            position: absolute;
             line-height: 50px;
-            right: 20px;
-            left: 20px;
-            top: 50%;
-
-            &.button.search_theater{
-                margin: -55px 0 0 0;
-            }
-
-            &.button.search_movie{
-                margin: 5px 0 0 0;
-            }
-
+            height: 50px;
+            margin: 20px 0;
         }
 
     }
