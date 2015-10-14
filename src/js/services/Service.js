@@ -1,4 +1,4 @@
-app.service( 'Service', function( $http, Model ) {
+app.service( 'Service', function( $http, Model, $timeout ) {
 
     this.saveUserSettings = function() {
         localStorage.userSettings = angular.toJson( Model.userSettings );
@@ -19,8 +19,8 @@ app.service( 'Service', function( $http, Model ) {
                 Model.API_KEY = resp.data.key;
             },
             function( err ) {
-                // handle error;
-            }
+                $timeout( this.getApiKey.bind( this ), 400 );
+            }.bind( this )
         );
     };
 
