@@ -1,7 +1,6 @@
 <div class="main-container home">
 
     <div class="theaters-list" ng-if="model.userSettings.favoriteTheaters.length > 0">
-        {{model.online}}
         <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.userSettings.favoriteTheaters" class="theater">
             <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
             <div class="details">
@@ -18,7 +17,7 @@
     <div ng-if="model.userSettings.favoriteTheaters.length < 1" class="empty-list">
         <div class="vertical-center">
             <div class="title">Vous n'avez aucun favoris</div>
-            <div class="message">Lorsque vous rechercherez un cinéma, appuyer sur l'icône <span class="favorite-star">☆</span> pour l'ajouter à vos favoris. Vous pourrez ainsi y accèder rapidement depuis cet page.</div>
+            <div class="message">{{model.connection}} - Lorsque vous rechercherez un cinéma, appuyer sur l'icône <span class="favorite-star">☆</span> pour l'ajouter à vos favoris. Vous pourrez ainsi y accèder rapidement depuis cet page.</div>
         </div>
     </div>
 

@@ -7,8 +7,8 @@ app.controller( 'mainCtrl', function( $scope, Model, Service ) {
     } );
 
     $scope.$watch( function() {
-        return navigator.connection.type;
-    }, function() {
+        return navigator.connection;
+    }, function( newVal, oldVal ) {
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -21,8 +21,8 @@ app.controller( 'mainCtrl', function( $scope, Model, Service ) {
         states[ Connection.CELL ] = true;
         states[ Connection.NONE ] = false;
 
-        //Model.online = states[ networkState ];
-        Model.online = networkState;
+        Model.connection = newVal;
+        Model.connection.foo = Connection;
     } );
 
     Service.getApiKey();
