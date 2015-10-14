@@ -62,19 +62,19 @@ app.config( function( $routeProvider ) {
 
 } );
 
-document.addEventListener( 'deviceready', function() {
-    if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) {
-        var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
-            title = "Connexion internet",
-            buttonLabels = [ "Réessayer", "Annuler" ];
-        navigator.notification.confirm( message, function( index ) {
-            checkConnection();
-        }, title, buttonLabels );
-    } else {
-        angular.bootstrap( document.body, [ 'Application' ] );
-    }
-}, false );
+// document.addEventListener( 'deviceready', function() {
+//     if ( navigator.connection.type == 0 || navigator.connection.type == 'none' ) {
+//         var message = "Une connexion à internet est nécessaire pour utiliser cette application.",
+//             title = "Connexion internet",
+//             buttonLabels = [ "Réessayer", "Annuler" ];
+//         navigator.notification.confirm( message, function( index ) {
+//             checkConnection();
+//         }, title, buttonLabels );
+//     } else {
+//         angular.bootstrap( document.body, [ 'Application' ] );
+//     }
+// }, false );
 
-window.addEventListener( "load", function() {
-    angular.bootstrap( document.body, [ "Application" ] )
-}, false );
+// window.addEventListener( "load", function() {
+//     angular.bootstrap( document.body, [ "Application" ] )
+// }, false );

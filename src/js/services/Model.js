@@ -16,6 +16,8 @@ app.factory( 'Model', function() {
 
         previousLocation: '/#/',
 
+        online: false,
+
         loader: {
             isVisible: false,
             message: "Chargement ..."
