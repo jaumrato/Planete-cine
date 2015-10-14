@@ -16,7 +16,7 @@ app.factory( 'Model', function() {
 
         previousLocation: '/#/',
 
-        online: false,
+        online: true,
 
         loader: {
             isVisible: false,

@@ -1,8 +1,6 @@
 <div class="main-container home">
 
     <div class="theaters-list" ng-if="model.userSettings.favoriteTheaters.length > 0">
-
-    {{online}}
         <a ng-href="#/showtimes/{{theater.code}}" ng-repeat="theater in model.userSettings.favoriteTheaters" class="theater">
             <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
             <div class="details">
