@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-    <widget xmlns   = "http://www.w3.org/ns/widgets"
-        xmlns:gap   = "http://phonegap.com/ns/1.0"
+    <widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
         id          = "com.planete_cine.my_app"
-        versionCode = "11"
-        version     = "1.0.2" >
+        versionCode = "12"
+        version     = "2.0.0" >
 
     <name>Planète Ciné</name>
 
@@ -24,7 +24,7 @@
     <preference name="fullscreen" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-targetSdkVersion" value="22" />
-    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="1500" />
 
     <gap:plugin name="org.apache.cordova.geolocation" />
@@ -33,27 +33,7 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 
-    <!--
-        <gap:plugin name="org.apache.cordova.battery-status" />
-        <gap:plugin name="org.apache.cordova.camera" />
-        <gap:plugin name="org.apache.cordova.media-capture" />
-        <gap:plugin name="org.apache.cordova.console" />
-        <gap:plugin name="org.apache.cordova.contacts" />
-        <gap:plugin name="org.apache.cordova.device" />
-        <gap:plugin name="org.apache.cordova.device-motion" />
-        <gap:plugin name="org.apache.cordova.device-orientation" />
-        <gap:plugin name="org.apache.cordova.file" />
-        <gap:plugin name="org.apache.cordova.file-transfer" />
-        <gap:plugin name="org.apache.cordova.globalization" />
-        <gap:plugin name="org.apache.cordova.inappbrowser" />
-        <gap:plugin name="org.apache.cordova.media" />
-        <gap:plugin name="org.apache.cordova.vibration" />
-    -->
-
-    <!-- default -->
     <icon src="icon.png" />
-
-    <!-- ANDROID -->
 
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icons/android/icon-48-mdpi.png" />
@@ -62,14 +42,15 @@
     <icon gap:platform="android" gap:qualifier="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png" />
     <icon gap:platform="android" gap:qualifier="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png" />
 
-    <splash gap:platform="android" gap:qualifier="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
-    <splash gap:platform="android" gap:qualifier="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
-    <splash gap:platform="android" gap:qualifier="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
-    <splash gap:platform="android" gap:qualifier="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
-    <splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
-    <splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
-    <splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
-    <splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
+
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
 
     <access origin="*" />
     <allow-intent href="*" />
