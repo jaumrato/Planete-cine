@@ -49,6 +49,7 @@ app.factory( 'ShowtimesByTheater', function( $http, Model, Service ) {
                     }
                     out[ day ] = theatersList;
                 }
+                Model.showtimesDays = Model.showtimesDays.sort();
                 Model.currentDay = Model.showtimesDays[ 0 ];
                 Model.movieShowtimesByTheaters = out;
             } );

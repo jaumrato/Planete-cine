@@ -23,7 +23,6 @@
     <allow-intent href="*" />
     <allow-navigation href="*" />
     <icon src="icon.png" />
-    <allow-intent href="market:*" />
     <icon density="ldpi" src="www/res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="www/res/icons/android/icon-48-mdpi.png" />
     <icon density="hdpi" src="www/res/icons/android/icon-72-hdpi.png" />
@@ -38,10 +37,9 @@
     <splash density="port-xxxhdpi" src="www/res/screens/android/screen-xhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="permissions" value="none" />
-    <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="android-minSdkVersion" value="14" />
-    <preference name="android-targetSdkVersion" value="22" />
+    <preference name="android-targetSdkVersion" value="25" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="ShowSplashScreenSpinner" value="false" />

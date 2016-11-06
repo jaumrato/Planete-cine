@@ -1,28 +1,10 @@
-app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Loader, Notifier ) {
+app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Loader, Notifier, Geolocation ) {
 
     $scope.model = Model;
 
     $scope.geolocationSearch = function() {
-        try {
-            navigator.geolocation.getCurrentPosition(
-                $scope.onSuccessGeolocation,
-                $scope.onErrorGeolocation,
-                Model.geolocationParams
-            );
-        } catch ( err ) {
-            $scope.onErrorGeolocation();
-        }
-    };
-
-    $scope.onSuccessGeolocation = function( position ) {
-        $scope.search( 'gps', position.coords );
-    };
-
-    $scope.onErrorGeolocation = function() {
-        Notifier.show( {
-            title: 'Activation du GPS',
-            message: "La recherche géolocalisée nécessite l'activation du GPS.",
-            retry: $scope.geolocationSearch
+        Geolocation.getCurrentPosition( function( position ) {
+            $scope.search( 'gps', position.coords );
         } );
     };
 

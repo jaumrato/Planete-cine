@@ -1,33 +1,12 @@
-app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model, ShowtimesByTheater, $location, Loader, Notifier ) {
+app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model, ShowtimesByTheater, $location, Loader, Notifier, Geolocation ) {
 
     $scope.model = Model;
 
     $scope.searchMode = $routeParams.searchMode;
 
     $scope.geolocationSearch = function() {
-        try {
-            navigator.geolocation.getCurrentPosition(
-                $scope.onSuccessGeolocation,
-                $scope.onErrorGeolocation,
-                Model.geolocationParams
-            );
-        } catch ( err ) {
-            $scope.onErrorGeolocation();
-        }
-    };
-
-    $scope.onSuccessGeolocation = function( position ) {
-        $scope.search( $routeParams.movieCode, $routeParams.searchMode, position.coords );
-    };
-
-    $scope.onErrorGeolocation = function() {
-        Notifier.show( {
-            title: 'Activation du GPS',
-            message: "La recherche géolocalisée nécessite l'activation du GPS.",
-            close: function() {
-                $location.path( "movieDetails" );
-            },
-            retry: $scope.geolocationSearch
+        Geolocation.getCurrentPosition( function( position ) {
+            $scope.search( $routeParams.movieCode, $routeParams.searchMode, position.coords );
         } );
     };
 
