@@ -34,7 +34,8 @@ app.factory( 'Model', function() {
         },
 
         userSettings: JSON.parse( localStorage.userSettings || JSON.stringify( {
-            favoriteTheaters: []
+            favoriteTheaters: [],
+            sortMovies: "title"
         } ) ),
 
         geolocationParams: {

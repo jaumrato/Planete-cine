@@ -1,4 +1,4 @@
-app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh, $location, Loader, Notifier ) {
+app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh, $location, Loader, Notifier, Service ) {
 
     $scope.model = Model;
 
@@ -16,6 +16,10 @@ app.controller( 'moviesCtrl', function( $scope, Movies, Model, haveToRefresh, $l
         } ).finally( function() {
             Loader.hide();
         } );
+    };
+
+    $scope.saveSortBy = function() {
+        Service.saveUserSettings();
     };
 
     if ( haveToRefresh ) $scope.getMoviesList();

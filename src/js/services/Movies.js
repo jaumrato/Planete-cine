@@ -11,12 +11,7 @@ app.factory( 'Movies', function( $http, Model, Service ) {
         },
 
         handleMoviesList: function( movies ) {
-            Model.nowShowingMovies = movies.map( function( movie ) {
-                if ( movie.poster && movie.poster.href ) {
-                    movie.poster.href = movie.poster.href;
-                }
-                return movie;
-            } );
+            Model.nowShowingMovies = movies;
         }
 
     };
