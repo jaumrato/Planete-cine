@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.planete_cine.my_app" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <name>Planète Ciné</name>
+
+    <description>
+        Trouver facilement les horaires des séances des films que vous voulez voir.
+    </description>
+
+    <author href="http://www.damienduhamel.fr" email="d.damien@live.fr">
+        Damien Duhamel
+    </author>
+
+    <content src="index.html" />
+
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-navigation href="*" />
+
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-targetSdkVersion" value="22" />
+
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreen" value="false" />
+
+    <icon src="icon.png" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+
+        <icon src="www/res/icons/android/icon-36-ldpi.png" density="ldpi"/>
+        <icon src="www/res/icons/android/icon-48-mdpi.png" density="mdpi"/>
+        <icon src="www/res/icons/android/icon-72-hdpi.png" density="hdpi"/>
+        <icon src="www/res/icons/android/icon-96-xhdpi.png" density="xhdpi"/>
+        <icon src="www/res/icons/android/icon-144-xxhdpi.png" density="xxhdpi"/>
+        <icon src="www/res/icons/android/icon-192-xxxhdpi.png" density="xxxhdpi"/>
+
+        <splash src="www/res/screens/android/screen-hdpi-portrait.png" density="port-ldpi"/>
+        <splash src="www/res/screens/android/screen-ldpi-portrait.png" density="port-mdpi"/>
+        <splash src="www/res/screens/android/screen-mdpi-portrait.png" density="port-hdpi"/>
+        <splash src="www/res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
+        <splash src="www/res/screens/android/screen-xhdpi-portrait.png" density="port-xxhdpi"/>
+        <splash src="www/res/screens/android/screen-xhdpi-portrait.png" density="port-xxxhdpi"/>
+    </platform>
+</widget>

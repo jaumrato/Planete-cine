@@ -1,0 +1,45 @@
+<div class="top-bar">
+    <a ng-href="{{model.previousLocation}}" class="back"></a>
+    <div class="title-container">{{model.movieDetails.title}}</div>
+</div>
+
+<div class="days-bar" ng-if="model.showtimesDays.length > 0">
+    <select ng-options="day as day | formatDay for day in model.showtimesDays" ng-model="model.currentDay"></select>
+</div>
+
+<div class="showtimes-by-theater main-container">
+
+    <div class="theaters-list" ng-if="model.showtimesDays.length > 0">
+        <div ng-repeat="theater in model.movieShowtimesByTheaters[ model.currentDay ] | orderBy:'distance'" class="theater">
+            <div class="theater-details">
+                <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
+                <div class="details">
+                    <div class="name">{{theater.name}}</div>
+                    <div class="adress">
+                        {{theater.city}} - {{theater.postalCode}}
+                        <div class="distance">Situé à {{theater.distance | formatDistance}}</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="showtimes-list">
+                <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
+                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="model.showtimesDays.length === 0" class="empty-list">
+        <div class="vertical-center">
+            <div class="title">Aucun résultat trouvé</div>
+            <div class="message" ng-if="searchMode === 'gps'">
+                Aucun cinéma proche de vous ne semble diffuser ce film.
+            </div>
+            <div class="message" ng-if="searchMode === 'favorites'">
+                Aucun de vos cinémas favoris ne semble diffuser ce film.
+            </div>
+        </div>
+    </div>
+
+</div>

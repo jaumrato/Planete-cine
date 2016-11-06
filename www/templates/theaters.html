@@ -1,13 +1,6 @@
 <div class="top-bar">
     <a href="#/" class="back"></a>
-    <div class="input-container">
-        <input
-            type="search"
-            ng-model="model.searchTheaterText"
-            autofocus="true"
-            placeholder="Entrez le nom d'un cinéma"
-            ng-keypress="onKeyPress($event)"/>
-    </div>
+    <input type="search" ng-model="model.searchTheaterText" autofocus="true" placeholder="Entrez le nom d'un cinéma" ng-keypress="onKeyPress($event)"/>
     <div class="geolocation-icon" ng-click="geolocationSearch()"></div>
 </div>
 

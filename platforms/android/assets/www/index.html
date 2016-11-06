@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Planète Ciné</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />
+        <link href="main.css" rel="stylesheet"/>
+    </head>
+    <body ng-app="Application" ng-controller="mainCtrl">
+        <ng-view></ng-view>
+        <loader></loader>
+        <notifier></notifier>
+        <offline></offline>
+        <script src="cordova.js"></script>
+        <script src="libs/angular.min.js"></script>
+        <script src="libs/angular-route.min.js"></script>
+        <script src="libs/moment.min.js"></script>
+        <script src="libs/moment.fr.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>

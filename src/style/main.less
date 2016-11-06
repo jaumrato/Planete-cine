@@ -72,7 +72,7 @@ input{
 .days-bar{
     position: fixed;
     top: 50px;
-    height: 50px;
+    height: 49px;
     left: 0;
     right: 0;
     z-index: 10;
@@ -92,10 +92,11 @@ input{
 
     &:after{
         content: '▼';
+        pointer-events: none;
         position: absolute;
         right: 18px;
-        top: 15px;
-        font-size: 14px;
+        top: 14px;
+        font-size: 16px;
     }
 
 }

@@ -1,0 +1,10 @@
+<div class="notifier" ng-if="model.notifier.isVisible">
+    <div class="center">
+        <div class="title">{{model.notifier.title}}</div>
+        <p>{{model.notifier.message}}</p>
+    </div>
+    <div class="buttons">
+        <button class="retry" ng-click="model.notifier.onRetry()">Réessayer</button>
+        <button class="close" ng-click="model.notifier.onClose()">Fermer</button>
+    </div>
+</div>
