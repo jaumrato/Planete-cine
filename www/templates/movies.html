@@ -13,14 +13,11 @@
 
 <div class="main-container movies">
     <div class="movies-list">
-        <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:filter | orderBy:model.userSettings.sortMovies">
-            <div class="details" style="background-image: url('{{movie.poster.href | resizePoster:150}}');">
-                <div class="title">{{movie.title}}</div>
-                <div class="genres">{{movie.genre | formatGenres}}</div>
-                <div class="runtime">{{movie.runtime | formatRuntime}}</div>
-                <div class="release">{{movie.release.releaseDate | formatRelease}}</div>
-                <div class="clear"></div>
-            </div>
+        <a class="movie" ng-href="#/movieDetails/{{movie.code}}" ng-repeat="movie in model.nowShowingMovies | filter:filter | orderBy:model.userSettings.sortMovies" style="background-image: url('{{movie.poster.href | resizePoster:150}}');">
+            <div class="title">{{movie.title}}</div>
+            <div class="genres">{{movie.genre | formatGenres}}</div>
+            <div class="runtime">{{movie.runtime | formatRuntime}}</div>
+            <div class="release">{{movie.release.releaseDate | formatRelease}}</div>
         </a>
     </div>
 </div>

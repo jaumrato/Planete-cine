@@ -7,39 +7,55 @@
 
     <video-player ng-if="model.movieDetails.trailer.url"></video-player>
 
-    <p ng-if="displayShowtimesButtons">
-        <a class="button" ng-href="#/showtimesByTheater/gps/{{code}}">Près de moi</a>
-        <a class="button right" ng-if="model.userSettings.favoriteTheaters.length > 0" ng-href="#/showtimesByTheater/favorites/{{code}}"> Cinémas favoris </a>
-        <span class="button right grey" ng-if="model.userSettings.favoriteTheaters.length === 0">Cinémas favoris</span>
-    </p>
+    <div class="buttons-container" ng-if="displayShowtimesButtons">
+        <button ng-click="showtimesByTheater( 'gps', code )" ng-disabled="!model.position">Près de moi</button>
+        <button ng-click="showtimesByTheater( 'favorites', code )" ng-disabled="model.userSettings.favoriteTheaters.length === 0">Mes cinémas</button>
+    </div>
 
-    <div class="title">Notation</div>
-    <p>
-        <span class="rating-category">Spectateurs</span> ( {{model.movieDetails.statistics.userRatingCount}} avis )
-        <span class="stars">{{model.movieDetails.statistics.userRating | formatRating}}</span>
-    </p>
-    <div class="clear"></div>
-    <p>
-        <span class="rating-category">Presse</span> ( {{model.movieDetails.statistics.pressReviewCount}} avis )
-        <span class="stars">{{model.movieDetails.statistics.pressRating | formatRating}}</span>
-    </p>
+    <div class="notation">
+        <div class="row">
+            <div>
+                <span class="rating-category">Spectateurs</span> ( {{model.movieDetails.statistics.userRatingCount || 0 }} avis )
+            </div>
+
+            <div class="stars">
+                {{model.movieDetails.statistics.userRating | formatRating}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <span class="rating-category">Presse</span> ( {{model.movieDetails.statistics.pressReviewCount || 0}} avis )
+            </div>
+
+            <div class="stars">
+                {{model.movieDetails.statistics.pressRating | formatRating}}
+            </div>
+        </div>
+    </div>
 
     <div class="title">Synopsis</div>
+
     <p>
         {{model.movieDetails.synopsis}}
     </p>
 
     <div class="title" ng-if="model.movieDetails.castMember.length > 0">Casting</div>
-    <p ng-repeat="item in model.movieDetails.castMember | limitTo:7" class="person">
-        <span class="thumbnail" style="background-image: url('{{item.picture.href | resizePoster:120}}');"></span>
-        <span class="name">{{item.person.name}}</span>
-        <span ng-if="item.activity.$ !== 'Acteur' && item.activity.$ !== 'Actrice'">{{item.activity.$}}</span>
-        <span ng-if="item.activity.$ === 'Acteur' || item.activity.$ === 'Actrice'">dans le rôle de {{item.role}}</span>
-    </p>
+
+    <div ng-repeat="item in model.movieDetails.castMember | limitTo:7" class="person">
+        <div class="thumbnail" style="background-image: url('{{item.picture.href | resizePoster:120}}');"></div>
+
+        <div>
+            <span class="name">{{item.person.name}}</span>
+            <span ng-if="item.activity.$ !== 'Acteur' && item.activity.$ !== 'Actrice'">{{item.activity.$}}</span>
+            <span ng-if="item.activity.$ === 'Acteur' || item.activity.$ === 'Actrice'">dans le rôle de {{item.role}}</span>
+        </div>
+    </div>
 
     <div class="title" ng-if="model.movieDetails.helpfulPositiveReview[ 0 ].body">
         Un avis positif
     </div>
+
     <p ng-if="model.movieDetails.helpfulPositiveReview[ 0 ].body">
         {{model.movieDetails.helpfulPositiveReview[ 0 ].body}}
     </p>
@@ -47,6 +63,7 @@
     <div class="title" ng-if="model.movieDetails.helpfulNegativeReview[ 0 ].body">
         Un avis négatif
     </div>
+
     <p ng-if="model.movieDetails.helpfulNegativeReview[ 0 ].body">
         {{model.movieDetails.helpfulNegativeReview[ 0 ].body}}
     </p>

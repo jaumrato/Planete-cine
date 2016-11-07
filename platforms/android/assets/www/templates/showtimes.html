@@ -3,9 +3,7 @@
     <div class="title-container">
         {{model.currentTheater.name}}
     </div>
-    <div class="favorite-star" ng-click="toggleFavorite()">
-        {{isFavorite ? '★' : '☆'}}
-    </div>
+    <div class="favorite-heart" ng-click="toggleFavorite()" style="background-image: url({{isFavorite ? 'assets/heart-fill.svg' : 'assets/heart-stroke.svg'}})"></div>
 </div>
 
 <div class="days-bar">
@@ -13,15 +11,12 @@
 </div>
 
 <div class="showtimes main-container movies-list">
-    <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}">
-        <div class="details" style="background-image: url('{{movie.thumbnail | resizePoster:150}}');">
-            <div class="title">{{title}}</div>
-            <div class="runtime">{{movie.runtime | formatRuntime}}</div>
-            <div class="clear"></div>
-            <div class="showtimes-list">
-                <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
-                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
-                </div>
+    <a ng-repeat="(title, movie) in model.moviesShowtimesForATheater[ model.currentDay ]" class="movie" ng-click="onMovieClick(movie)" ng-href="#/movieDetails/{{movie.code}}" style="background-image: url('{{movie.thumbnail | resizePoster:150}}');">
+        <div class="title">{{title}}</div>
+        <div class="runtime">{{movie.runtime | formatRuntime}}</div>
+        <div class="showtimes-list">
+            <div ng-repeat="(version, showtimes) in movie.showtimes" class="version-container">
+                <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
             </div>
         </div>
     </a>

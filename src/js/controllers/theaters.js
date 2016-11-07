@@ -2,10 +2,14 @@ app.controller( 'theatersCtrl', function( $scope, Model, Theaters, Loader, Notif
 
     $scope.model = Model;
 
+    Geolocation.startWatchPosition();
+
+    $scope.$on( '$destroy', function() {
+        Geolocation.stopWatchPosition();
+    } );
+
     $scope.geolocationSearch = function() {
-        Geolocation.getCurrentPosition( function( position ) {
-            $scope.search( 'gps', position.coords );
-        } );
+        $scope.search( 'gps', Model.position );
     };
 
     $scope.onKeyPress = function( e ) {

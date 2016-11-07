@@ -4,10 +4,14 @@ app.controller( 'showtimesByTheaterCtrl', function( $scope, $routeParams, Model,
 
     $scope.searchMode = $routeParams.searchMode;
 
+    Geolocation.startWatchPosition();
+
+    $scope.$on( '$destroy', function() {
+        Geolocation.stopWatchPosition();
+    } );
+
     $scope.geolocationSearch = function() {
-        Geolocation.getCurrentPosition( function( position ) {
-            $scope.search( $routeParams.movieCode, $routeParams.searchMode, position.coords );
-        } );
+        $scope.search( $routeParams.movieCode, $routeParams.searchMode, Model.position );
     };
 
     $scope.search = function( code, mode, position ) {

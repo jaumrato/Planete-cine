@@ -1,12 +1,14 @@
-app.factory( 'Geolocation', function( Model, Notifier ) {
+app.factory( 'Geolocation', function( Model, $rootScope ) {
 
     return {
 
-        getCurrentPosition: function( success ) {
+        watcher: null,
+
+        startWatchPosition: function() {
             try {
-                navigator.geolocation.getCurrentPosition(
-                    this.onSuccess.bind( this, success ),
-                    this.onError.bind( this, success ),
+                this.watcher = navigator.geolocation.watchPosition(
+                    this.onSuccess.bind( this ),
+                    this.onError.bind( this ),
                     Model.geolocationParams
                 );
             } catch ( err ) {
@@ -14,16 +16,18 @@ app.factory( 'Geolocation', function( Model, Notifier ) {
             }
         },
 
-        onSuccess: function( success, position ){
-            success( position );
+        stopWatchPosition: function() {
+            if ( this.watcher ) navigator.geolocation.clearWatch( this.watcher );
         },
 
-        onError: function( success ) {
-            Notifier.show( {
-                title: 'Activation du GPS',
-                message: "La recherche géolocalisée nécessite l'activation du GPS.",
-                retry: this.getCurrentPosition( success )
+        onSuccess: function( position ) {
+            $rootScope.$apply( function() {
+                Model.position = position.coords;
             } );
+        },
+
+        onError: function() {
+            // Nothing to do
         }
 
     };

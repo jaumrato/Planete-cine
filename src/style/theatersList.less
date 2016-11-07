@@ -8,12 +8,13 @@
         text-decoration: none;
         color: @darkBlue;
         background: #FFF;
-        box-shadow: 0 2px 6px 0 rgba( 0, 0, 0, 0.15 );
+        box-shadow: 0 2px 4px 0 rgba( 0, 0, 0, 0.1 );
+        display: flex;
+        border-radius: 2px;
 
         .thumbnail{
-            width: 60px;
-            float: left;
             height: 60px;
+            flex: 0 0 60px;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -23,19 +24,25 @@
         }
 
         .details{
-            width: 70%;
+            flex-grow: 1;
+            min-width: 0;
             margin: 0 0 0 10px;
-            float: left;
             color: @darkGrey;
 
             .name{
-                font-family: 'robotobold';
+                font-family: 'robotomedium';
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 font-size: 14px;
                 color: @darkBlue;
                 margin: 3px 0;
+            }
+
+            .showtimes-list{
+                padding: 10px 0 0 0;
+                margin: 10px 0 0 0;
+                border-top: 1px solid @lightGrey;
             }
         }
 
@@ -63,7 +70,7 @@
         text-align: center;
 
         .title{
-            font-family: 'robotobold';
+            font-family: 'robotomedium';
             color: @darkBlue;
             font-size: 18px;
             margin: 0 0 10px 0;
@@ -75,7 +82,7 @@
             line-height: 22px;
         }
 
-        .favorite-star{
+        .favorite-heart{
             color: @darkBlue;
             font-size: 14px;
             font-weight: bold;

@@ -15,6 +15,9 @@
         },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.planete_cine.my_app"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.planete_cine.my_app"
         }
     },
     "dependent_plugins": {

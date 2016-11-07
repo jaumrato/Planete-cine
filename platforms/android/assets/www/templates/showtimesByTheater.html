@@ -11,20 +11,20 @@
 
     <div class="theaters-list" ng-if="model.showtimesDays.length > 0">
         <div ng-repeat="theater in model.movieShowtimesByTheaters[ model.currentDay ] | orderBy:'distance'" class="theater">
-            <div class="theater-details">
-                <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
-                <div class="details">
-                    <div class="name">{{theater.name}}</div>
-                    <div class="adress">
-                        {{theater.city}} - {{theater.postalCode}}
-                        <div class="distance">Situé à {{theater.distance | formatDistance}}</div>
-                    </div>
+            <div class="thumbnail" style="background-image: url('{{theater.picture.href}}');"></div>
+
+            <div class="details">
+                <div class="name">{{theater.name}}</div>
+
+                <div class="adress">
+                    {{theater.city}} - {{theater.postalCode}}
+                    <div class="distance">Situé à {{theater.distance | formatDistance}}</div>
                 </div>
-                <div class="clear"></div>
-            </div>
-            <div class="showtimes-list">
-                <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
-                    <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+
+                <div class="showtimes-list">
+                    <div ng-repeat="(version, showtimes) in theater.showtimes" class="version-container">
+                        <span class="version-label">{{version}}</span> : <span ng-repeat="hour in showtimes" class="showtime">{{hour.$}}</span>
+                    </div>
                 </div>
             </div>
         </div>

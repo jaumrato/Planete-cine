@@ -1,7 +1,7 @@
 <div class="top-bar">
     <a href="#/" class="back"></a>
     <input type="search" ng-model="model.searchTheaterText" autofocus="true" placeholder="Entrez le nom d'un cinéma" ng-keypress="onKeyPress($event)"/>
-    <div class="geolocation-icon" ng-click="geolocationSearch()"></div>
+    <button class="geolocation-icon" ng-click="geolocationSearch()" ng-disabled="!model.position"></button>
 </div>
 
 <div class="main-container theaters">

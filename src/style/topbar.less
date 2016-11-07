@@ -11,21 +11,25 @@
 
     .back,
     .geolocation-icon,
-    .favorite-star,
+    .favorite-heart,
     .sort {
         display: block;
         width: 45px;
         line-height: 40px;
+        background: transparent;
+        border: 0;
         background-position: center center;
         background-repeat: no-repeat;
+        outline: none;
+
+        &:disabled{
+            opacity: 0.25;
+        }
     }
 
-    .favorite-star{
-        color: #FFF;
-        font-size: 24px;
-        font-weight: 900;
-        text-align: center;
+    .favorite-heart{
         margin: 0 0 0 5px;
+        background-size: 20px;
     }
 
     .back{
@@ -57,8 +61,10 @@
         background: @turquoise;
         font-size: 16px;
         height: 40px;
+        line-height: 40px;
+        min-width: 0;
         background: #FFF;
-        border-radius: 3px;
+        border-radius: 2px;
         color: @darkBlue;
 
         &::-webkit-search-decoration,
@@ -69,15 +75,16 @@
         }
 
         &::-webkit-input-placeholder {
-            color: lighten( @turquoise, 30% );
+            color: lighten( @turquoise, 20% );
         }
     }
 
     .title-container{
         flex-grow: 1;
+        min-width: 0;
         line-height: 40px;
-        font-size: 16px;
-        font-family: robotobold;
+        font-size: 20px;
+        font-family: robotomedium;
         color: #FFF;
         white-space: nowrap;
         overflow: hidden;

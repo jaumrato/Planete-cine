@@ -3,4 +3,5 @@ logs
 pids
 *.pid
 *.seed
+*.keystore
 node_modules

@@ -1,9 +1,15 @@
-app.controller( 'movieDetailsCtrl', function( $scope, MovieDetails, Model, displayShowtimesButtons, back, $routeParams, $location, Loader, Notifier ) {
+app.controller( 'movieDetailsCtrl', function( $scope, MovieDetails, Model, displayShowtimesButtons, back, $routeParams, $location, Loader, Notifier, Geolocation ) {
 
     $scope.model = Model;
     $scope.displayShowtimesButtons = displayShowtimesButtons;
     $scope.back = back;
     $scope.code = $routeParams.movieCode;
+
+    Geolocation.startWatchPosition();
+
+    $scope.$on( '$destroy', function() {
+        Geolocation.stopWatchPosition();
+    } );
 
     $scope.getMovieDetails = function() {
         Loader.show( 'Chargement des informations' );
@@ -22,6 +28,10 @@ app.controller( 'movieDetailsCtrl', function( $scope, MovieDetails, Model, displ
         ).finally( function() {
             Loader.hide();
         } );
+    };
+
+    $scope.showtimesByTheater = function( methode, code ){
+        $location.path( "showtimesByTheater/" + methode + "/" + code );
     };
 
     $scope.getMovieDetails();
