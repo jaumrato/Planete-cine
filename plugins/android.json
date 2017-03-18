@@ -7,16 +7,16 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.planete_cine.my_app"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.planete_cine.my_app"
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.planete_cine.my_app"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.planete_cine.my_app"
-        },
-        "cordova-plugin-network-information": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.planete_cine.my_app"
         }
     },

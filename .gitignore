@@ -5,3 +5,4 @@ pids
 *.seed
 *.keystore
 node_modules
+platforms/android

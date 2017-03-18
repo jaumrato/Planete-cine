@@ -4,7 +4,7 @@ app.factory( 'Model', function() {
 
         BASE_URL: 'http://api.allocine.fr/rest/v3',
 
-        API_KEY: null,
+        API_KEY: 'XXXXXXXXXXX',
 
         moviesShowtimesForATheater: null,
 

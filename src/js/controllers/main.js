@@ -6,6 +6,4 @@ app.controller( 'mainCtrl', function( $scope, Model, Service, $window ) {
         Model.previousLocation = previous;
     } );
 
-    Service.getApiKey();
-
 } );
